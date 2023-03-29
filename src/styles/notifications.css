@@ -1,0 +1,61 @@
+.notifications {
+  padding: 25px 0;
+}
+.notifications-section {
+  margin-top: 50px;
+}
+.notifications-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  margin-top: 20px;
+  gap: 15px;
+}
+
+.notifications-head .time {
+  font-weight: 500;
+}
+
+.notifications-head .right {
+  display: flex;
+  gap: 25px;
+}
+
+.notifications-head .read-all {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--main-color);
+  gap: 5px;
+}
+
+.notifications-head .read-all svg {
+  font-size: 25px;
+}
+
+.notifications-head .clear-all {
+  color: #f00;
+}
+
+@media (max-width: 768px) {
+  .notifications-head .time {
+    font-weight: 500;
+    font-size: 17px;
+  }
+
+  .notifications-head .right {
+    gap: 15px;
+  }
+  .notifications-head .read-all {
+    font-size: 16px;
+  }
+
+  .notifications-head .read-all svg {
+    font-size: 20px;
+  }
+
+  .notifications-head .clear-all {
+    font-size: 16px;
+  }
+}

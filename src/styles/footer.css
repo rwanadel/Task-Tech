@@ -1,0 +1,130 @@
+.footer {
+  border-top: 1px solid #ccc;
+}
+.footer-section {
+  display: flex;
+  gap: 20px;
+  padding: 35px 0;
+}
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-info {
+  flex: 2;
+}
+.footer-text {
+  max-width: 90%;
+  font-size: 18px;
+  color: #5e6b81;
+  margin-bottom: 15px;
+}
+
+.social-links {
+  font-size: 18px;
+}
+
+.social-links li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  color: #263238;
+}
+
+.social-links li svg {
+  margin-right: 15px;
+  font-size: 25px;
+}
+
+.links {
+  flex: 1;
+}
+
+.footer-title {
+  font-weight: 500;
+  font-size: 22px;
+  color: var(--main-color);
+  margin-bottom: 15px;
+}
+
+.links li {
+  color: #5e6b81;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.copyrights-section {
+  padding: 20px 0;
+  background-color: var(--main-color);
+  color: #fff;
+  font-size: 20px;
+}
+.copyrights-section .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copyrights-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+@media (max-width: 992px) {
+  .footer-section {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .footer-info,
+  .footer-section ul:not(.footer-info ul):not(:last-of-type) {
+    padding-bottom: 30px;
+    border-bottom: 2px solid #ccc;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo {
+    width: 180px;
+  }
+  .logo img {
+    width: 100%;
+  }
+  .footer-text {
+    font-size: 17px;
+  }
+  .social-links li {
+    font-size: 15px;
+  }
+  .social-links li svg {
+    margin-right: 9px;
+    font-size: 21px;
+  }
+  .footer-info,
+  .footer-section ul:not(.footer-info ul):not(:last-of-type) {
+    padding-bottom: 15px;
+  }
+  .footer-title {
+    font-size: 20px;
+  }
+  .links li {
+    font-size: 17px;
+  }
+  .copyrights-section .container {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+  .copyrights-text {
+    font-size: 17px;
+  }
+
+  .copyrights-text,
+  .copyrights-links {
+    text-align: center;
+  }
+
+  .copyrights-links {
+    font-size: 15px;
+  }
+}

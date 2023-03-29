@@ -1,0 +1,89 @@
+.freelancer-card {
+  background-color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 30px 10px;
+  border-radius: 15px;
+}
+
+.freelancer-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.freelancer-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.freelancer-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.freelancer-name {
+  font-weight: 500;
+  font-size: 22px;
+}
+.freelancer-job {
+  color: #7c7c7c;
+  margin-bottom: 6px;
+}
+
+.freelancer-rates {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.freelancer-rates svg {
+  color: #ffc107;
+  font-size: 22px;
+}
+
+.freelancer-rates span {
+  font-weight: 600;
+}
+
+.freelancer-rates p {
+  color: #7c7c7c;
+}
+
+.freelancer-skills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.freelancer-skills li {
+  padding: 3px 15px;
+  background-color: #16506936;
+  color: #165069;
+  border-radius: 25px;
+}
+
+.freelancer-card button {
+  margin: 0 auto;
+  display: block;
+  padding: 10px 25px;
+  background-color: #16506936;
+  color: #165069;
+  border-radius: 15px;
+  border: 0;
+  font-size: 18px;
+  margin-top: 25px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.freelancer-card button:hover {
+  background-color: #165069;
+  color: #fff;
+}

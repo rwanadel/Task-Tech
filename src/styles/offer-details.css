@@ -1,0 +1,284 @@
+.offer-details {
+  padding: 35px 0;
+}
+.offer-comment {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.offer-comment-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+}
+.offer-comment-details-title {
+  font-weight: 500;
+  font-size: 22px;
+  color: var(--main-color);
+}
+.offer-comment-user-details {
+  display: flex;
+  gap: 30px;
+}
+
+.offer-comment-user-details-basic {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.offer-comment-user-details-advanced {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 18px;
+}
+
+.offer-comment-user-details-advanced svg {
+  color: #ffc107;
+  font-size: 20px;
+}
+
+.offer-comment-user-details-advanced span {
+  font-weight: 600;
+}
+
+.offer-comment-user-details-advanced p {
+  color: #7c7c7c;
+}
+
+.offer-comment-user-image {
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.offer-comment-user-image img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.offer-comment-image {
+  width: 250px;
+  height: 150px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.offer-comment-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Offer details */
+
+.about-seller {
+  display: flex;
+  padding: 30px 0;
+  gap: 20px;
+}
+
+.about-seller .text-info .seller-description {
+  margin-bottom: 15px;
+}
+
+.about-seller .text-info .seller-description h4,
+.about-seller .text-info .seller-services h4 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.about-seller .text-info .seller-description p {
+  color: #7c7c7c;
+  font-size: 20px;
+}
+
+.about-seller .text-info .seller-services ul {
+  list-style: none;
+  font-size: 18px;
+  padding: 0;
+  margin: 0;
+  color: #7c7c7c;
+}
+
+.seller-card {
+  padding: 20px;
+  border: 2px solid #eee;
+  border-radius: 5px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.seller-card .card-header {
+  margin-bottom: 15px;
+}
+
+.seller-card .card-header h4 {
+  font-size: 22px;
+  font-weight: 600;
+}
+.seller-card .card-header span {
+  width: 100%;
+  height: 2px;
+  background-color: #eee;
+  display: block;
+  margin-top: 20px;
+}
+
+.seller-card-contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.seller-card-user-image {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.seller-card-user-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.seller-card-contact-info h4 {
+  font-size: 20px;
+}
+.seller-card-contact-info span {
+  color: #7c7c7c;
+}
+.seller-card-contact-info .seller-card-user-rate {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.seller-card-user-rate svg {
+  color: #ffc107;
+  font-size: 20px;
+}
+
+.seller-card-user-rate span {
+  font-weight: 600;
+}
+
+.seller-card-user-rate p {
+  color: #7c7c7c;
+}
+
+.seller-card button {
+  width: 100%;
+  display: block;
+  margin-top: 15px;
+  padding: 15px 20px;
+  background-color: #fff;
+  border: 2px solid var(--main-color);
+  border-radius: 10px;
+  color: var(--main-color);
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.seller-extra-data {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 15px;
+}
+
+.seller-extra-data h4 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.seller-extra-data ul {
+  list-style: none;
+}
+
+.seller-extra-data ul li {
+  margin-bottom: 5px;
+  font-size: 18px;
+  color: #7c7c7c;
+}
+
+.continue-btn {
+  background-color: var(--main-color);
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 20px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+a[href="/payment"] {
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .offer-comment {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .offer-comment-user-details {
+    flex-wrap: wrap;
+    row-gap: 8px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #eee;
+  }
+  .offer-comment-user-details-basic {
+    gap: 5px;
+  }
+  .offer-comment-details-title {
+    font-size: 20px;
+  }
+  .offer-comment-user-image {
+    width: 35px;
+    height: 35px;
+  }
+  .offer-comment-username {
+    font-weight: 500;
+    font-size: 21px;
+  }
+  .offer-comment-image {
+    width: 100%;
+    height: 250px;
+  }
+  .about-seller {
+    flex-direction: column;
+  }
+  .about-seller .text-info .seller-description h4,
+  .about-seller .text-info .seller-services h4 {
+    font-size: 22px;
+  }
+  .about-seller .text-info .seller-description p {
+    font-size: 18px;
+  }
+  .seller-extra-data h4 {
+    font-size: 22px;
+  }
+  .seller-extra-data {
+    flex-wrap: wrap;
+  }
+  .seller-card {
+    width: auto;
+  }
+  .seller-card .card-header h4 {
+    font-size: 20px;
+  }
+}

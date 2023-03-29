@@ -1,0 +1,76 @@
+.filters {
+  flex: 1;
+}
+
+.group-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.5s;
+  margin-bottom: 10px;
+}
+
+.group-header:hover {
+  background-color: #f2f2f2;
+}
+
+.group-header span {
+  font-size: 18px;
+}
+
+.group-header svg {
+  font-size: 22px;
+  transition: 0.5s;
+}
+
+.group-header svg.up {
+  transform: rotate(-180deg);
+}
+
+.options {
+  margin-left: 10px;
+}
+
+.salary-range {
+  display: flex;
+  gap: 5px;
+}
+.salary-range div {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.salary-range div input {
+  width: 100%;
+  padding: 3px 5px;
+  border-radius: 5px;
+  border: 2px solid #eee;
+  height: 40px;
+}
+
+@media (max-width: 768px) {
+  .filters {
+    display: none;
+    position: absolute;
+    background: #fff;
+    z-index: 50;
+    padding: 15px;
+    border: 2px solid #bbb;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    max-width: 350px;
+  }
+  .filters.show {
+    display: block;
+  }
+  .freelancers-header {
+    font-size: 15px;
+    gap: 15px;
+  }
+}

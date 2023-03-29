@@ -1,0 +1,27 @@
+.services-section {
+  display: flex;
+  gap: 25px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.filters-in-mobile {
+  padding: 5px 10px;
+  margin: 10px 0;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  color: #010101;
+  background-color: #ffffff;
+  border-radius: 5px;
+  display: none;
+  cursor: pointer;
+  border: 2px solid #ccc;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .filters-in-mobile {
+    display: block;
+  }
+}

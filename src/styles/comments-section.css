@@ -1,0 +1,155 @@
+.comments-section {
+  margin: 20px 0;
+}
+
+.comments-section .title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.comments-container {
+  padding: 15px 20px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 10px;
+}
+
+.comment {
+  display: flex;
+  gap: 15px;
+  padding: 20px 5px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+  transition: 0.5s;
+  text-decoration: none;
+  justify-content: space-between;
+}
+
+.comment:hover {
+  background-color: #fbfbfb;
+}
+
+.comment:last-of-type {
+  border-bottom: unset;
+}
+.comment-main {
+  display: flex;
+  gap: 20px;
+}
+.comment-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.comment-image img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.comment-body {
+  flex: 1;
+}
+.comment-body .username {
+  font-weight: 500;
+  font-size: 22px;
+  color: #000;
+}
+
+.comment-body .comment-text {
+  font-size: 20px;
+  color: #7c7c7c;
+}
+
+.comment-date {
+  color: #7c7c7c;
+  font-size: 18px;
+}
+
+/* Add comment */
+.add-comment {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+
+.comment-form {
+  margin-bottom: 15px;
+}
+
+.add-comment .comment-form {
+  display: flex;
+  gap: 15px;
+}
+.comment-form .user-image {
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.comment-form .user-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.comment-form textarea {
+  flex: 1;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 17px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  resize: none;
+  height: 120px;
+}
+.comment-form textarea:focus {
+  outline: none;
+}
+
+.add-comment button {
+  width: 200px;
+  align-self: flex-end;
+  padding: 15px 15px;
+  background-color: var(--main-color);
+  border: 0;
+  color: #fff;
+  border-radius: 35px;
+  font-size: 18px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .comment {
+    flex-direction: column;
+  }
+  .comment-image,
+  .comment-form .user-image {
+    width: 50px;
+    height: 50px;
+  }
+  .comment span {
+    font-size: 1.2rem;
+  }
+  .comment-date {
+    text-align: right;
+    font-size: 15px;
+  }
+  .comment-body .username {
+    font-size: 18px;
+  }
+  .comment-body .comment-text {
+    font-size: 16px;
+  }
+  .comment-form textarea {
+    font-size: 16px;
+  }
+  .add-comment button {
+    width: 150px;
+    padding: 10px;
+    font-size: 16px;
+  }
+}

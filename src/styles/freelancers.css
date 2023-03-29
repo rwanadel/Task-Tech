@@ -1,0 +1,25 @@
+.freelancers {
+  flex: 3;
+}
+
+.freelancers-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.freelancers-header .sort-by {
+  display: flex;
+  width: 200px;
+  align-items: center;
+}
+
+.freelancers-header .sort-by span {
+  width: 100px;
+}
+.freelancers-contanier {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
