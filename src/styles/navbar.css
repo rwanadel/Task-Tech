@@ -8,6 +8,7 @@
 }
 
 .navigators {
+  
   display: flex;
   flex: 1;
   list-style: none;
@@ -16,6 +17,7 @@
 }
 
 .navigators li {
+  
   position: relative;
   font-size: 20px;
   font-weight: 400;
