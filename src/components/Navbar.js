@@ -15,21 +15,22 @@ import "../styles/navbar.css";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
+
   return (
     <div className="navbar">
       <div className="container">
         <Link to="/" className="logo">
           <img src={Logo} alt="task-tech" />
         </Link>
-        <ul className={`navigators ${showMenu ? "show" : ""}`}>
+        <ul className= {`navigators ${showMenu ? "show" : ""}`}>
           <li onClick={() => setShowMenu(false)}>
             <Link to="/">Home</Link>
           </li>
           <li onClick={() => setShowMenu(false)}>About</li>
           <li onClick={() => setShowMenu(false)}>
-            <Link to="/services">Services</Link>
+            Services
           </li>
-          <li onClick={() => setShowMenu(false)}>Contact</li>
+          <li onClick={() => setShowMenu(false)}> <Link to="/services">Contact</Link></li>
 
           <li className="mobile" onClick={() => setShowMenu(false)}>
             <Link to="/chats">
