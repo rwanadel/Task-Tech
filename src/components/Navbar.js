@@ -30,7 +30,7 @@ const Navbar = () => {
           <li onClick={() => setShowMenu(false)}>
             Services
           </li>
-          <li onClick={() => setShowMenu(false)}> <Link to="/services">Contact</Link></li>
+          <li onClick={() => setShowMenu(false)}> <Link to="/contact">Contact</Link></li>
 
           <li className="mobile" onClick={() => setShowMenu(false)}>
             <Link to="/chats">
