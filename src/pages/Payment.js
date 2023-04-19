@@ -11,10 +11,13 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
+import Layout from "../ui/Layout";
 
 const Payment = () => {
   return (
+    <div><Layout>
     <div className="payment">
+    
       <div className="container">
         <div className="payment-offer">
           <div className="payment-offer-details">
@@ -140,7 +143,9 @@ const Payment = () => {
           </div>
         </div>
       </div>
+    
     </div>
+    </Layout></div>
   );
 };
 

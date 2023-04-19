@@ -4,8 +4,10 @@ import "../styles/offer-details.css";
 import User from "../assets/user.jpg";
 import Post from "../assets/thumbnail.jpg";
 import { Link } from "react-router-dom";
+import Layout from "../ui/Layout";
 const OfferDetails = () => {
   return (
+    <div><Layout>
     <div className="offer-details">
       <div className="container">
         <div className="offer-comment">
@@ -104,6 +106,7 @@ const OfferDetails = () => {
         </Link>
       </div>
     </div>
+    </Layout></div>
   );
 };
 

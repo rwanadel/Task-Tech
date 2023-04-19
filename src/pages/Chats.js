@@ -8,10 +8,12 @@ import { RiSearchLine, RiListSettingsLine } from "react-icons/ri";
 import { CgMathPlus } from "react-icons/cg";
 import ChatItem from "../components/ChatItem";
 import Chat from "../components/Chat";
+import Layout from "../ui/Layout";
 
 const Chats = () => {
   const [listActive, setListActive] = useState(true);
   return (
+    <div><Layout>
     <div className="chats">
       <div className="container">
         <div className={`chats-menu ${listActive ? "active" : ""}`}>
@@ -98,6 +100,7 @@ const Chats = () => {
         />
       </div>
     </div>
+    </Layout></div>
   );
 };
 
