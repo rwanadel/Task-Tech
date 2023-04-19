@@ -6,9 +6,11 @@ import FreeLancers from "../components/FreeLancers";
 
 // Import styles
 import "../styles/services.css";
-const Services = () => {
+import Layout from "../ui/Layout";
+const Contact = () => {
   const [showFilters, setShowFilters] = useState(false);
   return (
+    <div><Layout>
     <div className="services">
       <CategoriesNavbar />
       <BreadCrumbs />
@@ -27,7 +29,8 @@ const Services = () => {
         </div>
       </div>
     </div>
+    </Layout></div>
   );
 };
 
-export default Services;
+export default Contact;

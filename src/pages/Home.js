@@ -1,12 +1,14 @@
 import { Container,Row,Col } from "react-bootstrap";
 import React from "react";
 import "../styles/home.css"
+import Layout from "../ui/Layout";
 
 
 
 const Home = () => {
   return (
     <div>
+      <Layout>
     <Container>
       {/* row1 vector and text */}
         <Row className="justify-content-center" >
@@ -158,11 +160,12 @@ const Home = () => {
           </Col>
           </Row>
           </div>
-       
+    
 
 
 
         </Container>
+        </Layout>
     </div>
 
   )
