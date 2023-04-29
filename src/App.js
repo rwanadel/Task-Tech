@@ -14,13 +14,17 @@ import Error from "./pages/error404";
 import Create2 from "./pages/createprofile2";
 import Create3 from "./pages/createprofile3";
 
+
+import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
 function App() {
   return (
     <div className="App">
      {/*<Layout> */}
         <Routes>
           <Route path="/" element={<Home />} />
-          
+          <Route path="/signUp" element={<SignUp/>} />
+          <Route path="/signIn" element={<SignIn/>} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/offer-details" element={<OfferDetails />} />
