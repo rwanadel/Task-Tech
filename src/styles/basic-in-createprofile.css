@@ -1,0 +1,26 @@
+.logo{
+    width: 220px;
+    height: 50px;
+    margin-left: 60px;
+    margin-top: 40px;
+}
+.text-create{
+    width: 400px;
+    height: 50px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: -0.6125px;
+    color: #263238;
+    
+    margin-top:90px ;
+}
+.line{
+    width: 100%;
+    height: 20px;
+    background-color: aqua;
+    border-bottom: #263238;
+}

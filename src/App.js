@@ -11,6 +11,8 @@ import "./styles/global.css";
 import Create1 from "./pages/createprofile1";
 import Contact from "./pages/contact";
 import Error from "./pages/error404";
+import Create2 from "./pages/createprofile2";
+import Create3 from "./pages/createprofile3";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route path="/post-details" element={<PostDetails />} />
           <Route path="/chats" element={<Chats />} />
           <Route path="/createprofile1" element={<Create1/>}/>
+          <Route path="/createprofile2" element={<Create2/>}/>
+          <Route path="/createprofile3" element={<Create3/>}/>
           <Route path="*" element={<Error/>}/>
         </Routes>
       {/*</Layout>*/}

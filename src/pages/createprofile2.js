@@ -1,24 +1,22 @@
 import Leftbar from "../components/leftbar-in-profile";
-
+import Logo from "../assets/logo.png";
 import {  Row } from "react-bootstrap";
 import "../styles/createprofile1.css"
-import Basic from "../components/basic-in-createprofile";
 
-const Create1=()=>{
+const Create2=()=>{
     return(
         <div className="body">
+        
         <Row>
-            <Basic/>
+            <div className="logo">
+            <img  src={Logo} alt="tasktech"/>
+            </div>
         </Row>
-        <Row>
-            <Leftbar/>
-        </Row>
         
-        
-        
-        
+        <Leftbar/>
+        hello from2
         </div>
         
     )
 }
-export default Create1;
+export default Create2;
