@@ -11,7 +11,7 @@ const Home = () => {
       <Layout>
     <Container>
       {/* row1 vector and text */}
-        <Row className="justify-content-center" >
+        <Row  >
           
           <Col sm="6" >
             <div className="search-text">
