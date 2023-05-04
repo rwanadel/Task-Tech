@@ -44,21 +44,34 @@ export const createNewUser = (data) => async (dispatch) => {
 
 //Sign in User
 export const SignInUser = (data) => async (dispatch) => {
-  const { setLoading, ...restData } = data;
+  const { setIsLoading, ...restData } = data;
   try {
-    setLoading(true);
-    const response = await insertData(`auth/signin`, restData);
-    setLoading(false);
-    // dispatch({
-    //   type: SIGNIN_USER,
-    //   payload: response,
-    //   loading: true,
-    // });
+    setIsLoading(true);
+    // {
+    //   data: {
+    //     token: string;
+    //     data: {
+    //       user
+    //     }
+    //   } 
+    // }
+    const response = await insertData(`users/login`, restData);
+    setIsLoading(false);
+    
+    const { user } = response?.data?.data;
+    const { token } = response?.data;
+    if (user && token) {
+      localStorage.setItem("userData", JSON.stringify({ user, token }));
+    }
+    dispatch({
+      type: ADD_USER_DATA,
+      payload: { user, token },
+    });
   } catch (e) {
-    setLoading(false);
-    // dispatch({
-    //   type: SIGNIN_USER,
-    //   payload: e.response,
-    // });
+    setIsLoading(false);
+    dispatch({
+      type: ADD_ERROR_MESSAGE,
+      payload: e?.response?.data?.message ?? "Please try again later",
+    });
   }
 };

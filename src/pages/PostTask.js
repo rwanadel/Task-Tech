@@ -1,3 +1,13 @@
+import React from 'react'
+
+export const PostTask = () => {
+    return (
+        <div>
+            Loool
+        </div>
+    )
+}
+
 // import React from "react";
 // import { Col, Container, Row } from "react-bootstrap";
 // import PropTypes from 'prop-types';

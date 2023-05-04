@@ -4,6 +4,7 @@ import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 import { Link } from "react-router-dom";
 import FormHelperText from "@mui/material/FormHelperText";
+import { connect } from "react-redux";
 
 import signUp from "../assets/sign.png";
 import logo from "../assets/logo.png";
@@ -14,13 +15,17 @@ import SignInHook from "../Hooks/SignIn-Hook";
 import LoaderComponents from "../components/LoaderComponents";
 import { CustomPassword } from "../components/Password";
 import "../styles/signIn.css";
+import { CustomSnackbar } from "../components/customSnackbar";
+import { CLEAR_MESSAGES } from "../redux/type";
 
-const SignIn = () => {
+const SignIn = ({ authReducer, dispatch }) => {
+  const { errorMessage } = authReducer
+
   const {
     showErrors,
     email,
     password,
-    loading,
+    isLoading,
     OnchangeEmail,
     OnchangePassword,
     OnSubmit,
@@ -28,7 +33,15 @@ const SignIn = () => {
 
   return (
     <div>
-      <LoaderComponents open={loading} />
+      <CustomSnackbar
+        message={errorMessage}
+        handleClose={() => {
+          dispatch({
+            type: CLEAR_MESSAGES,
+          });
+        }}
+      />
+      <LoaderComponents open={isLoading} />
       <Container>
         <Row>
           <Col sm="12">
@@ -139,5 +152,8 @@ const SignIn = () => {
     </div>
   );
 };
+const mapStateToProps = (state) => ({
+  ...state,
+});
+export default connect(mapStateToProps)(SignIn);
 
-export default SignIn;
