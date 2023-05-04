@@ -1,5 +1,6 @@
 import baseUrl from '../Api/baseURL'
-const useInsertData = async (url, parmas) => {
+
+const insertData = async (url, parmas) => {
     const config = {
         headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`
@@ -8,4 +9,4 @@ const useInsertData = async (url, parmas) => {
     const res = await baseUrl.post(url, parmas, config);
     return res;
 }
-export { useInsertData };
+export { insertData };
