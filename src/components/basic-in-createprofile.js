@@ -12,9 +12,7 @@ const Basic=()=>{
         <Row>
             <div className="text-create">Create Profile</div>
         </Row>
-        <Row>
-            <div className="line">hi</div>
-        </Row>
+        
         </div>
     )
 }
