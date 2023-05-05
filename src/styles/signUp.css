@@ -31,33 +31,12 @@
     height: 60px;
     outline: none;
 }
-
-.eye-icon{
-    position: absolute;
-    font-size: 18px;
-    top: 66%;
-    right: 410px;
-    transform: translate(-50%);
-    cursor: pointer;
-    color:rgb(177, 177, 177) ;
-    padding: 5px;
-}
-.eye-icon2{
-    position: absolute;
-    font-size: 18px;
-    top: 75%;
-    right: 410px;
-    transform: translate(-50%);
-    cursor: pointer;
-    color:rgb(177, 177, 177) ;
-    padding: 5px;
-}
-.btn1{
+.btn{
     width: 300px;
     height: 45px;
     background-color:rgb(22, 80, 105) ;
     border-radius: 5px;
-    margin-left: 25px;
+    margin-left: 22px;
     margin-top: 20px;
     color: #FFF;
     transition: all 0.3s ease ;

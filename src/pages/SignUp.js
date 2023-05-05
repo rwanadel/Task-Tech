@@ -1,47 +1,51 @@
-import React, { useState } from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
-import IconButton from '@mui/material/IconButton';
-import TextField from '@mui/material/TextField';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import FormControl from '@mui/material/FormControl';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { Link } from 'react-router-dom'
-import FormHelperText from '@mui/material/FormHelperText';
-import { Input } from '@mui/material';
+import React from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import TextField from "@mui/material/TextField";
+import FormControl from "@mui/material/FormControl";
+import { Link } from "react-router-dom";
+import FormHelperText from "@mui/material/FormHelperText";
 
-import signUp from "../assets/sign.png"
-import logo from "../assets/logo.png"
-import Google from "../assets/Google.png"
-import facebook from "../assets/Vector.png"
-import SignUpHook from '../Hooks/SignUp-Hook'
-import { isValidEmail } from '../Api/helpers';
-import "../styles/signUp.css"
-import LoaderComponents from '../components/LoaderComponents';
+import { connect } from "react-redux";
 
-const SignUp = () => {
-  const { name, email, password, confirmPassword, OnchangeName, OnchangeEmail, OnchangePassword, OnchangeConfirmPassword, OnSubmit, showErrors, loading } = SignUpHook();
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+import signUp from "../assets/sign.png";
+import logo from "../assets/logo.png";
+import Google from "../assets/Google.png";
+import facebook from "../assets/Vector.png";
+import SignUpHook from "../Hooks/SignUp-Hook";
+import { isValidEmail } from "../Api/helpers";
+import LoaderComponents from "../components/LoaderComponents";
+import { CustomSnackbar } from "../components/customSnackbar";
+import { CLEAR_MESSAGES } from "../redux/type";
+import { CustomPassword } from "../components/Password";
+import "../styles/signUp.css";
 
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleClickShowConfirmPassword = () => setShowConfirmPassword((show) => !show);
-
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
-  console.log('xcdf: ')
-  console.log('loading: ', loading)
+const SignUp = ({ authReducer, dispatch }) => {
+  const {
+    name,
+    email,
+    password,
+    confirmPassword,
+    onChange,
+    OnSubmit,
+    showErrors,
+    loading,
+  } = SignUpHook();
+  const { errorMessage } = authReducer;
 
   return (
     <Container>
       <LoaderComponents open={loading} />
+      <CustomSnackbar
+        message={errorMessage}
+        handleClose={() => {
+          dispatch({
+            type: CLEAR_MESSAGES,
+          });
+        }}
+      />
       <Row>
         <Col sm="12">
-          <div className='logo-signUp'>
+          <div className="logo-signUp">
             <img src={logo} alt="logo" />
           </div>
         </Col>
@@ -49,22 +53,27 @@ const SignUp = () => {
       <Row className="justify-content-center">
         <Col sm="6">
           <div className="signUp">
-            <img src={signUp} alt="signUp" />
+            <img src={signUp} alt="signUp" style={{ width: "30rem" }} />
           </div>
         </Col>
         <Col sm="6">
-          <div className='text1'>
+          <div className="text1">
             <h3>Create an account,</h3>
           </div>
-          <div className="text2">
-            Let’s create account together
-          </div>
-          <div style={{ width: '20rem', marginLeft: "1rem" }}>
-            <FormControl sx={{ m: 1 }} fullWidth variant="standard" error={showErrors && name.length === 0}>
-              <TextField
+          <div className="text2">Let’s create account together</div>
+          <div style={{ width: "20rem", marginLeft: "1rem" }}>
+            <FormControl
+              sx={{ m: 1 }}
+              fullWidth
+              variant="standard"
               error={showErrors && name.length === 0}
+            >
+              <TextField
+                error={showErrors && name.length === 0}
                 value={name}
-                onChange={OnchangeName}
+                onChange={(e) => {
+                  onChange("name", e);
+                }}
                 id="standard-error"
                 label="Full Name"
                 variant="standard"
@@ -74,11 +83,18 @@ const SignUp = () => {
               </FormHelperText>
             </FormControl>
             {/* <input value={email} onChange={OnchangeEmail} className="data" type="text" placeholder="Email" /><br /> */}
-            <FormControl sx={{ m: 1 }} fullWidth variant="standard" error={showErrors && !isValidEmail(email)}>
-              <TextField
+            <FormControl
+              sx={{ m: 1 }}
+              fullWidth
+              variant="standard"
               error={showErrors && !isValidEmail(email)}
+            >
+              <TextField
+                error={showErrors && !isValidEmail(email)}
                 value={email}
-                onChange={OnchangeEmail}
+                onChange={(e) => {
+                  onChange("email", e);
+                }}
                 id="standard-error"
                 label="E-mail"
                 variant="standard"
@@ -90,88 +106,69 @@ const SignUp = () => {
 
             {/* <input value={password} onChange={OnchangePassword} className="data" type="password" placeholder="password" /><br />
               <i className='bx bx-hide eye-icon'></i> */}
-            <FormControl sx={{ m: 1 }} fullWidth variant="standard" error={showErrors && password.length < 7}>
-              <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-              <Input
-              error={showErrors && password.length < 7}
-                id="outlined-adornment-password"
-                type={showPassword ? 'text' : 'password'}
-                value={password}
-                onChange={OnchangePassword}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-                label="Password"
-              />
-              <FormHelperText>
-                {showErrors && password.length < 7 && "Password length should be more than 7"}
-              </FormHelperText>
-            </FormControl>
+            <CustomPassword
+              isError={showErrors && password.length < 7}
+              onchange={(e) => {
+                onChange("password", e);
+              }}
+              value={password}
+              labelName='Password'
+              errorMessage={'Password length should be longer than 7'}
+            />
+            <CustomPassword
+              isError={showErrors && (password!==confirmPassword || confirmPassword.length === 0)}
+              onchange={(e) => {
+                onChange("confirmPassword", e);
+              }}
+              value={confirmPassword}
+              labelName='Confirm Password'
+              errorMessage={'Confirm password is in '}
+            />
             {/* <input value={confirmPassword} onChange={OnchangeConfirmPassword} className="data" type="password" placeholder="confirm password" /><br />
               <i className='bx bx-hide eye-icon2'></i> */}
-            <FormControl sx={{ m: 1 }} fullWidth variant="standard" error={showErrors && ( password !== confirmPassword || confirmPassword.length === 0) }>
-              <InputLabel htmlFor="outlined-adornment-confirm-password">Confirm Password</InputLabel>
-              <Input
-              error={showErrors && ( password !== confirmPassword || confirmPassword.length === 0) }
-                id="outlined-adornment-confirm-password"
-                type={showConfirmPassword ? 'text' : 'password'}
-                value={confirmPassword}
-                onChange={OnchangeConfirmPassword}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowConfirmPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-                label="Confirm Password"
-              />
-              <FormHelperText>
-                {showErrors && ( password !== confirmPassword || confirmPassword.length === 0) && `Passwords doesn't match`}
-              </FormHelperText>
-            </FormControl>
-            <button onClick={OnSubmit} className='btn1' >sign in </button>
-          </div>
-          <div className='line'></div>
-        </Col>
-      </Row>
-      <Row>
-        <Col sm="6"></Col>
-        <Col sm="6">
-          <div className='media-options'>
-            <Link href='#'>
-              <img src={Google} alt="Google " className='google' />
-            </Link>
-          </div>
-          <div className='media-options'>
-            <Link href='#'>
-              <img src={facebook} alt="facebook" className='facebook' />
-            </Link>
-          </div>
 
+            <button onClick={OnSubmit} className="btn">
+              sign Up{" "}
+            </button>
+          </div>
+          <div className="line"></div>
         </Col>
       </Row>
       <Row>
         <Col sm="6"></Col>
         <Col sm="6">
-          <label className='trans'>
+          <div className="media-options">
+            <Link href="#">
+              <img src={Google} alt="Google " className="google" />
+            </Link>
+          </div>
+          <div className="media-options">
+            <Link href="#">
+              <img src={facebook} alt="facebook" className="facebook" />
+            </Link>
+          </div>
+        </Col>
+      </Row>
+      <Row>
+        <Col sm="6"></Col>
+        <Col sm="6">
+          <label className="trans">
             Already Have an account ?
-            <Link to="/signIn" style={{ textDecoration: "none" }}>
-              <span style={{ cursor: 'pointer', color: ' rgb(22, 80, 105)', fontSize: '18v px' }}>
+            <Link
+              to="/signIn"
+              style={{
+                textDecoration: "none",
+                marginLeft: "0.5rem",
+                fontWeight: "bold",
+              }}
+            >
+              <span
+                style={{
+                  cursor: "pointer",
+                  color: " rgb(22, 80, 105)",
+                  fontSize: "18v px",
+                }}
+              >
                 sign in
               </span>
             </Link>
@@ -179,7 +176,11 @@ const SignUp = () => {
         </Col>
       </Row>
     </Container>
-  )
-}
+  );
+};
 
-export default SignUp
+const mapStateToProps = (state) => ({
+  ...state,
+});
+
+export default connect(mapStateToProps)(SignUp);
