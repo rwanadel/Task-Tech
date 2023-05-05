@@ -1,0 +1,46 @@
+.logo-verify{
+    height: 182px;
+    width: 40px;
+    margin: 20px;
+}
+.text1{
+    color:rgb(22, 80, 105);
+    font-size: 23px;
+    margin-left: 20px;
+    
+}
+.text2{
+    color: rgb(177, 177, 177);
+    text-align: left;
+    font-size: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.input-verity{
+    width: 80px;
+    height: 85px;
+    margin-top: 70px;
+    margin-left: 31px;
+    background-color:#E0E0E0 ;
+    border-radius: 5px;
+    border: #E0E0E0 solid 3px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.btn1-Verity{
+    width: 316px;
+    height: 45px;
+    font-size: 22px;
+    background-color:rgb(22, 80, 105) ;
+    border-radius: 5px;
+    margin-left: 81px;
+    margin-top: 50px;
+    color: #FFF;
+    transition: all 0.3s ease ;
+
+}
+.trans-Verify{
+    margin-top: 32px;
+    margin-left: 117px;
+}
