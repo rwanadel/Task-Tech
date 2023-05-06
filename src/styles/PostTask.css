@@ -1,0 +1,13 @@
+
+.btn-PostTask{
+    width: 300px;
+    height: 45px;
+    background-color:rgb(22, 80, 105) ;
+    border-radius: 5px;
+    margin-left: 146px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #FFF;
+    font-size: 20px;
+    transition: all 0.3s ease ;
+}
