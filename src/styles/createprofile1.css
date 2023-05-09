@@ -1,7 +1,11 @@
+*{
+    font-family: 'Poppins';
+    font-style: normal;
+}
 .body{
     margin: 0px;
     padding: 0px;
-    width: 1500px;
+    width: 1520px;
     overflow-x: hidden;
 
 }
@@ -12,10 +16,6 @@
     margin-left: 60px;
     margin-top: 40px;
 }
-
-
-
-
 .box1{
     width: 360px;
     height: 428px;
@@ -29,8 +29,6 @@
 .cat-in-box1,.cat-in-box2,.cat-in-box3,.cat-in-box4{
     width: 320px;
     height: 80px;
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 400;
     font-size: 25px;
     line-height: 45px;
@@ -42,16 +40,6 @@
     border: none;
     text-align: left;
 }
-.cat-in-box1{
-    color:#165069;
-    
-    
-}
-
-    
-
-
-
 .box2{
     margin-top: 60px;
     width: 890px;
@@ -84,8 +72,6 @@
 .text-form{
     width: 200px;
     height: 24px;
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 400;
     font-size: 24px;
     line-height: 24px;
@@ -99,6 +85,40 @@
 .field-form-mini{
     width: 164px;
 
+}
+.enter-skills{
+    box-sizing: border-box;
+    width: 492px;
+    height: 61px;
+    background: #F5F5F5;
+    border: 1px solid #B8B8B8;
+    border-radius: 8px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.598929px;
+    color: #B8B8B8;
+    margin-left: 35px;
+
+}
+.btn-for-skills{
+    width: 319px;
+    height: 61px;
+    background: #165069;
+    box-shadow: 0px 2px 10px rgba(22, 80, 105, 0.81);
+    border-radius: 8px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 24px;
+    letter-spacing: -0.598929px;
+    color: #FFFFFF;
+    margin-left: 20px;
+    border:none;
+
+}
+.parentto{
+    
+    margin-top: 40px;
 }
 
 

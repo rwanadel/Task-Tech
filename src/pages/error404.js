@@ -27,7 +27,7 @@ const Error=()=>{
                         <div className="text2" >
                         The page you’re looking for isn’t available. 
                         </div>
-                        <Link to="/"><button className="btn-go-home">Go Back to home</button></Link>
+                        <Link to="/home"><button className="btn-go-home">Go Back to home</button></Link>
 
                         </Col>
                     </Row>

@@ -1,0 +1,15 @@
+.btn-skills-nonclicked{
+    box-sizing: border-box;
+    width: 185px;
+    height: 55px;
+    border: 1px solid #D9D9D9;
+    border-radius: 25px;
+
+}
+.btn-skills-onclicked{
+    width: 214px;
+    height: 55px;
+    background: #165069;
+    box-shadow: 0px 2px 4px rgba(22, 80, 105, 0.74);
+    border-radius: 25px;
+}

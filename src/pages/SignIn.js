@@ -108,9 +108,10 @@ const SignIn = ({ authReducer, dispatch }) => {
                 </Link>
               </span>
               <br />
-              <button onClick={OnSubmit} className="btn2">
+            <button onClick={OnSubmit} className="btn2">
                 sign in{" "}
               </button>
+              
             </div>
             <div className="line"></div>
 
