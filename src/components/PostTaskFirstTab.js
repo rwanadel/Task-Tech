@@ -3,35 +3,41 @@ import { Col, Form, Row } from "react-bootstrap";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 import { FormHelperText } from "@mui/material";
-import LoaderComponents from "./LoaderComponents";
-import { CustomSnackbar } from "./customSnackbar";
-import { insertData } from "../Hook/useInsertData";
-// import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-// import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
-// import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-// import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import moment from "moment";
+import { DemoItem } from "@mui/x-date-pickers/internals/demo";
+import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 
-export const FirstTabComponent = () => {
+import { insertData } from "../Hook/useInsertData";
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+
+export const FirstTabComponent = ({ setIsLoading, setErrorMessage } ) => {
+
   const [showErrors, setShowErrors] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
   const [values, setValues] = useState({
     name: "",
     description: "",
-    salary: "",
+    delieveryDate: 0,
+    salary: 0,
     sowftWareTool: "",
-    category: "",
+    catogery: "",
   });
+
+  const categpries = ['Web Design', 'Marketing', 'Business' ,'Software Engineering' , 'Web Developer', 'App Developer' ,'Product Manager' , 'Accountant,Ui/Ux Design' , 'Graphics Designer']
+
   const handleChange = (key, value) => {
     setValues({
       ...values,
       [key]: value,
     });
   };
+
   const saveData = async () => {
     try {
-      setIsLoading(true)
-      const response = await insertData("services", values);
+      setIsLoading(true);
+      const response = await insertData("posts", values);
       console.log("res: ", response);
     } catch (err) {
       console.log("err: ", err);
@@ -39,15 +45,18 @@ export const FirstTabComponent = () => {
         err?.response?.data?.message ?? "Error, Please try again later"
       );
     }
-    setIsLoading(false)
+    setIsLoading(false);
   };
+
+ 
+
   const OnSubmit = () => {
     if (
       values.name.length === 0 ||
       values.description.length === 0 ||
-      values.salary <= 1000 ||
-      values.sowftWareTool.length <= 0 ||
-      values.category.length === 0
+      Number(values.salary) === 0 ||
+      values.catogery.length === 0 ||
+      Number(values.delieveryDate) === 0
     ) {
       setShowErrors(true);
     } else {
@@ -55,16 +64,10 @@ export const FirstTabComponent = () => {
       saveData();
     }
   };
+
   return (
     <>
       <Row>
-      <CustomSnackbar
-        message={errorMessage}
-        handleClose={() => {
-          setErrorMessage("");
-        }}
-      />
-      <LoaderComponents open={isLoading} />
         <Col sm="3"></Col>
         <Col sm="6">
           <Form>
@@ -142,7 +145,7 @@ export const FirstTabComponent = () => {
               </FormControl>
             </div>
 
-            {/* <div>
+            <div>
               <label
                 htmlFor="Delivery Date"
                 style={{
@@ -153,14 +156,28 @@ export const FirstTabComponent = () => {
               >
                 Delivery Date
               </label>
-              <FormControl  sx={{ m: 1 ,background:"#F5F5F5" }} fullWidth variant="outlined">
-                <LocalizationProvider   dateAdapter={AdapterMoment}>
-                  <DemoContainer  components={["DatePicker"]} >
-                    <DatePicker  label="Basic date picker" />
-                  </DemoContainer>
+              <FormControl
+                sx={{ m: 1, background: "#F5F5F5" }}
+                fullWidth
+                variant="outlined"
+              >
+                <LocalizationProvider error={false} dateAdapter={AdapterMoment}>
+                  <DemoItem>
+                    <DesktopDatePicker
+                      value={
+                        values.delieveryDate === 0
+                          ? ""
+                          : moment(values.delieveryDate)
+                      }
+                      onChange={(e) => {
+                        console.log("djsgfk: ", e);
+                        handleChange("delieveryDate", moment(e).format("X"));
+                      }}
+                    />
+                  </DemoItem>
                 </LocalizationProvider>
               </FormControl>
-            </div> */}
+            </div>
 
             <div>
               <label
@@ -175,7 +192,7 @@ export const FirstTabComponent = () => {
               </label>
               <FormControl
                 sx={{ m: 1 }}
-                error={showErrors && values.salary >=1000}
+                error={showErrors && Number(values.salary) === 0}
                 fullWidth
                 variant="outlined"
               >
@@ -183,17 +200,17 @@ export const FirstTabComponent = () => {
                   id="outlined-error"
                   variant="outlined"
                   type="number"
-                  value={values.salary}
+                  value={values.salary === 0 ? "" : values.salary}
                   onChange={(e) => {
                     handleChange("salary", e.target.value);
                   }}
-                  error={showErrors && values.salary >=1000}
+                  error={showErrors && Number(values.salary) === 0}
                   fullWidth
                   style={{ background: "#F5F5F5" }}
                 />
                 <FormHelperText>
                   {showErrors &&
-                    values.salary.length === 0 &&
+                    Number(values.salary) === 0 &&
                     "Salary should be longer than 1000"}
                 </FormHelperText>
               </FormControl>
@@ -237,38 +254,59 @@ export const FirstTabComponent = () => {
 
             <div>
               <label
-                htmlFor="Category"
+                htmlFor="catogery"
                 style={{
                   marginTop: "20px",
                   marginLeft: "9px",
                   fontSize: "20px",
                 }}
               >
-                Category
+                catogery
               </label>
-              <FormControl
+              <FormControl fullWidth error={showErrors && values.catogery.length === 0}>
+                <Select
+                  id="category"
+                  value={values.catogery}
+                  onChange={(e) => {
+                    handleChange("catogery", e.target.value);
+                  }}
+                  error={showErrors && values.catogery.length === 0}
+                >
+                  {categpries.map((category) => (
+                    <MenuItem key={category} value={category}>
+                      {category}
+                    </MenuItem>
+                  ))}
+                </Select>
+                <FormHelperText>
+                  {showErrors &&
+                    values.catogery.length === 0 &&
+                    "You should be choose a catogery"}
+                </FormHelperText>
+              </FormControl>
+              {/* <FormControl
                 sx={{ m: 1 }}
-                error={showErrors && values.category.length === 0}
+                error={showErrors && values.catogery.length === 0}
                 fullWidth
                 variant="outlined"
               >
                 <TextField
                   id="outlined-error"
                   variant="outlined"
-                  value={values.category}
+                  value={values.catogery}
                   onChange={(e) => {
-                    handleChange("category", e.target.value);
+                    handleChange("catogery", e.target.value);
                   }}
-                  error={showErrors && values.category.length === 0}
+                  error={showErrors && values.catogery.length === 0}
                   fullWidth
                   style={{ background: "#F5F5F5" }}
                 />
                 <FormHelperText>
                   {showErrors &&
-                    values.category.length === 0 &&
-                    "You should be choose a category"}
+                    values.catogery.length === 0 &&
+                    "You should be choose a catogery"}
                 </FormHelperText>
-              </FormControl>
+              </FormControl> */}
             </div>
           </Form>
         </Col>

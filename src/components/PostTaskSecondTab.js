@@ -3,39 +3,79 @@ import { Col, Form, Row } from "react-bootstrap";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
 import { FormHelperText } from "@mui/material";
-// import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-// import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
-// import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-// import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import moment from "moment";
+import { DemoItem } from "@mui/x-date-pickers/internals/demo";
+import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+import Button from "@mui/material/Button";
+import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
 
-export const SecTabComponent = () => {
+import { insertData } from "../Hook/useInsertData";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+
+export const SecTabComponent = ({ setIsLoading, setErrorMessage }) => {
   const [showErrors, setShowErrors] = useState(false);
-  const [values, setValuses] = useState({
+  const [values, setValues] = useState({
     name: "",
     description: "",
-    salary: "",
+    delieveryDate: 0,
+    salary: 0,
     sowftWareTool: "",
-    category: "",
+    catogery: "",
   });
+
+  const categpries = [
+    "Web Design",
+    "Marketing",
+    "Business",
+    "Software Engineering",
+    "Web Developer",
+    "App Developer",
+    "Product Manager",
+    "Accountant,Ui/Ux Design",
+    "Graphics Designer",
+  ];
+
   const handleChange = (key, value) => {
-    setValuses({
+    setValues({
       ...values,
       [key]: value,
     });
   };
+
+  const saveData = async () => {
+    try {
+      setIsLoading(true);
+      const response = await insertData("posts", values);
+      console.log("res: ", response);
+    } catch (err) {
+      console.log("err: ", err);
+      setErrorMessage(
+        err?.response?.data?.message ?? "Error, Please try again later"
+      );
+    }
+    setIsLoading(false);
+  };
+
+ 
+
   const OnSubmit = () => {
     if (
-      values.name.length === "" ||
-      values.description.length === "" ||
-      values.salary <= 1000 ||
-      values.sowftWareTool.length === "" ||
-      values.category.length === ""
+      values.name.length === 0 ||
+      values.description.length === 0 ||
+      Number(values.salary) === 0 ||
+      values.catogery.length === 0 ||
+      Number(values.delieveryDate) === 0
     ) {
-      setShowErrors(true)
-    }else{
+      setShowErrors(true);
+    } else {
       //talk to backend
+      saveData();
     }
   };
+
   return (
     <>
       <Row>
@@ -53,7 +93,12 @@ export const SecTabComponent = () => {
               >
                 Name of your Task
               </label>
-              <FormControl sx={{ m: 1 }} error={showErrors&&values.name.length === 0}fullWidth variant="outlined">
+              <FormControl
+                sx={{ m: 1 }}
+                error={showErrors && values.name.length === 0}
+                fullWidth
+                variant="outlined"
+              >
                 <TextField
                   id="outlined-error"
                   variant="outlined"
@@ -61,7 +106,7 @@ export const SecTabComponent = () => {
                   onChange={(e) => {
                     handleChange("name", e.target.value);
                   }}
-                  error={showErrors&&values.name.length === 0}
+                  error={showErrors && values.name.length === 0}
                   fullWidth
                   placeholder="Create responsive design"
                   style={{ background: "#F5F5F5" }}
@@ -85,7 +130,12 @@ export const SecTabComponent = () => {
               >
                 Tell us about your task
               </label>
-              <FormControl sx={{ m: 1 }} error={showErrors&&values.description.length === 0} fullWidth variant="outlined">
+              <FormControl
+                sx={{ m: 1 }}
+                error={showErrors && values.description.length === 0}
+                fullWidth
+                variant="outlined"
+              >
                 <TextField
                   id="outlined-multiline-static"
                   placeholder="Description"
@@ -93,7 +143,7 @@ export const SecTabComponent = () => {
                   onChange={(e) => {
                     handleChange("description", e.target.value);
                   }}
-                  error={showErrors&&values.description.length === 0}
+                  error={showErrors && values.description.length === 0}
                   multiline
                   rows={4}
                   style={{ background: "#F5F5F5" }}
@@ -105,7 +155,31 @@ export const SecTabComponent = () => {
                 </FormHelperText>
               </FormControl>
             </div>
-            {/* <div>
+            <div>
+            <label
+                htmlFor="Attach File"
+                style={{
+                  marginTop: "20px",
+                  marginLeft: "9px",
+                  fontSize: "20px",
+                }}
+              >
+                Attach File
+              </label>
+              <Button variant="outlined" sx={{ width: '100%', height: '3.6rem' }} color='error' component="label">
+              <AttachFileOutlinedIcon style={{
+                paddingLeft: '100px',
+          
+              }} />
+                <input
+                  hidden
+                  accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                  multiple
+                  type="file"
+                />
+              </Button>
+            </div>
+            <div>
               <label
                 htmlFor="Delivery Date"
                 style={{
@@ -116,14 +190,28 @@ export const SecTabComponent = () => {
               >
                 Delivery Date
               </label>
-              <FormControl fullWidth sx={{ m: 1 }} variant="outlined">
-                <LocalizationProvider dateAdapter={AdapterMoment}>
-                  <DemoContainer components={["DatePicker"]}>
-                    <DatePicker label="Basic date picker" />
-                  </DemoContainer>
+              <FormControl
+                sx={{ m: 1, background: "#F5F5F5" }}
+                fullWidth
+                variant="outlined"
+              >
+                <LocalizationProvider error={false} dateAdapter={AdapterMoment}>
+                  <DemoItem>
+                    <DesktopDatePicker
+                      value={
+                        values.delieveryDate === 0
+                          ? ""
+                          : moment(values.delieveryDate)
+                      }
+                      onChange={(e) => {
+                        console.log("djsgfk: ", e);
+                        handleChange("delieveryDate", moment(e).format("X"));
+                      }}
+                    />
+                  </DemoItem>
                 </LocalizationProvider>
               </FormControl>
-            </div> */}
+            </div>
 
             <div>
               <label
@@ -136,22 +224,27 @@ export const SecTabComponent = () => {
               >
                 Salary
               </label>
-              <FormControl sx={{ m: 1 }} error={showErrors&&values.salary >=1000} fullWidth variant="outlined">
+              <FormControl
+                sx={{ m: 1 }}
+                error={showErrors && Number(values.salary) === 0}
+                fullWidth
+                variant="outlined"
+              >
                 <TextField
                   id="outlined-error"
                   variant="outlined"
                   type="number"
-                  value={values.salary}
+                  value={values.salary === 0 ? "" : values.salary}
                   onChange={(e) => {
                     handleChange("salary", e.target.value);
                   }}
-                  error={showErrors&&values.salary >=1000}
+                  error={showErrors && Number(values.salary) === 0}
                   fullWidth
                   style={{ background: "#F5F5F5" }}
                 />
                 <FormHelperText>
                   {showErrors &&
-                    values.salary.length === 0 &&
+                    Number(values.salary) === 0 &&
                     "Salary should be longer than 1000"}
                 </FormHelperText>
               </FormControl>
@@ -168,7 +261,12 @@ export const SecTabComponent = () => {
               >
                 Software Tool
               </label>
-              <FormControl sx={{ m: 1 }} error={showErrors&&values.sowftWareTool.length === 0} fullWidth variant="outlined">
+              <FormControl
+                sx={{ m: 1 }}
+                error={showErrors && values.sowftWareTool.length === 0}
+                fullWidth
+                variant="outlined"
+              >
                 <TextField
                   id="outlined-error"
                   variant="outlined"
@@ -176,7 +274,7 @@ export const SecTabComponent = () => {
                   onChange={(e) => {
                     handleChange("sowftWareTool", e.target.value);
                   }}
-                  error={showErrors&&values.sowftWareTool.length === 0}
+                  error={showErrors && values.sowftWareTool.length === 0}
                   fullWidth
                   style={{ background: "#F5F5F5" }}
                 />
@@ -190,31 +288,37 @@ export const SecTabComponent = () => {
 
             <div>
               <label
-                htmlFor="Category"
+                htmlFor="catogery"
                 style={{
                   marginTop: "20px",
                   marginLeft: "9px",
                   fontSize: "20px",
                 }}
               >
-                Category
+                catogery
               </label>
-              <FormControl sx={{ m: 1 }} error={showErrors&&values.category.length === 0} fullWidth variant="outlined">
-                <TextField
-                  id="outlined-error"
-                  variant="outlined"
-                  value={values.category}
+              <FormControl
+                fullWidth
+                error={showErrors && values.catogery.length === 0}
+              >
+                <Select
+                  id="category"
+                  value={values.catogery}
                   onChange={(e) => {
-                    handleChange("category", e.target.value);
+                    handleChange("catogery", e.target.value);
                   }}
-                  error={showErrors&&values.category.length === 0}
-                  fullWidth
-                  style={{ background: "#F5F5F5" }}
-                />
+                  error={showErrors && values.catogery.length === 0}
+                >
+                  {categpries.map((category) => (
+                    <MenuItem key={category} value={category}>
+                      {category}
+                    </MenuItem>
+                  ))}
+                </Select>
                 <FormHelperText>
                   {showErrors &&
-                    values.category.length === 0 &&
-                    "You should be choose a category"}
+                    values.catogery.length === 0 &&
+                    "You should be choose a catogery"}
                 </FormHelperText>
               </FormControl>
             </div>

@@ -1,14 +1,17 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types';
-import SwipeableViews from 'react-swipeable-views';
-import { useTheme } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import { FirstTabComponent } from './PostTaskFirstTab';
-import { SecTabComponent } from './PostTaskSecondTab';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import SwipeableViews from "react-swipeable-views";
+import { useTheme } from "@mui/material/styles";
+import AppBar from "@mui/material/AppBar";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+
+import { FirstTabComponent } from "./PostTaskFirstTab";
+import { SecTabComponent } from "./PostTaskSecondTab";
+import LoaderComponents from "./LoaderComponents";
+import { CustomSnackbar } from "./customSnackbar";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -39,14 +42,15 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `full-width-tab-${index}`,
-    'aria-controls': `full-width-tabpanel-${index}`,
+    "aria-controls": `full-width-tabpanel-${index}`,
   };
 }
-
 
 const TabsNavigation = () => {
   const theme = useTheme();
   const [value, setValue] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -57,41 +61,60 @@ const TabsNavigation = () => {
   };
 
   return (
-    <Box sx={{ width: '100%', marginTop: '2rem' }}>
+    <Box sx={{ width: "100%", marginTop: "2rem" }}>
+      <LoaderComponents open={isLoading} />
+      <CustomSnackbar
+        message={errorMessage}
+        handleClose={() => {
+          setErrorMessage("");
+        }}
+      />
       <AppBar position="static">
         <Tabs
           value={value}
           onChange={handleChange}
-          indicatorColor="secondary"
-          style={{ 
-            background: '#FFFFFF',
-            color: '#165069',
-            boxShadow: 'none'
-           }}
+          indicatorColor="primary"
+          style={{
+            background: "#FFFFFF",
+            color: "#165069",
+            boxShadow: "none",
+          }}
           textColor="inherit"
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab style={{fontSize:"20px",fontWeight:"bold"}} label="Post a task" {...a11yProps(0)} />
-          <Tab style={{fontSize:"20px",fontWeight:"bold"}}label="Post a service" {...a11yProps(1)} />
+          <Tab
+            style={{ fontSize: "20px", fontWeight: "bold" }}
+            label="Post a task"
+            {...a11yProps(0)}
+          />
+          <Tab
+            style={{ fontSize: "20px", fontWeight: "bold" }}
+            label="Post a service"
+            {...a11yProps(1)}
+          />
         </Tabs>
       </AppBar>
       <SwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+        axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={value}
         onChangeIndex={handleChangeIndex}
       >
-   
         <TabPanel value={value} index={0} dir={theme.direction}>
-           <FirstTabComponent />
+          <FirstTabComponent
+            setIsLoading={setIsLoading}
+            setErrorMessage={setErrorMessage}
+          />
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          <SecTabComponent/>
+          <SecTabComponent
+            setIsLoading={setIsLoading}
+            setErrorMessage={setErrorMessage}
+          />
         </TabPanel>
       </SwipeableViews>
     </Box>
   );
-}
+};
 
-export default TabsNavigation
-
+export default TabsNavigation;
