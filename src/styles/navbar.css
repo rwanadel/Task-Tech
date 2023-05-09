@@ -14,6 +14,8 @@
   list-style: none;
   margin-left: 100px;
   gap: 20px;
+  align-items: center;
+  margin-bottom: 0;
 }
 
 .navigators li {
@@ -58,7 +60,7 @@
   font-size: 25px;
   color: #444;
 }
-
+/* ksdfk */
 .data-peice .badge {
   position: absolute;
   background-color: #f00;

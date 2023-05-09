@@ -10,7 +10,7 @@ import {
 } from "../type";
 
 const inital = {
-  userData: [],
+  userData: JSON.parse(localStorage.getItem('userData')) ?? {},
   currentUser: [],
   forgetPassword: [],
   verifyPassword: [],
