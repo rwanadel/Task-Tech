@@ -17,12 +17,14 @@ const Create2=()=>{
 
         <Row>
             <Col sm="12">
-                <div >  -----------borderr---------------</div>
+            <div class="w3-light-grey " style={{height:"14px"}}>
+                        <div class="w3-container  w3-round-xlarge" style={{width:"50%",height:"14px",backgroundColor:"#165069"}}></div>
+                </div>
             
             </Col>
         </Row>
 
-        <Row   >
+        <Row>
         <Col  sm="4">
         <div className="box1">
 
@@ -30,7 +32,7 @@ const Create2=()=>{
                 <button  className="cat-in-box1">Basic information</button>
             </Link> <hr/>
             <Link to="/createprofile2" >
-                <button className="cat-in-box2">About Me</button>
+                <button className="cat-in-box2" style={{color:"#165069"}}>About Me</button>
             </Link> <hr/>
             <Link to="/createprofile3" >
                 <button className="cat-in-box3">Education</button>
@@ -59,11 +61,11 @@ const Create2=()=>{
             <Form action="createprofile3">
             <Row>
                 <Col sm="12">
-                   
+            
                     {/* <input className="bio-field" type="textarea"  />*/}  
                     <textarea  className="bio-field"> Describe your top skills, experiences, and interests. This is one of the first things clients will see on your profile.</textarea>
                         <div className="condition">At least 100 characters</div>
-                   
+                
                 </Col>
             </Row>
 

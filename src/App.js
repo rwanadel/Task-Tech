@@ -21,6 +21,8 @@ import { PostTask } from "./pages/PostTask";
 import Protected from "./components/Protected";
 import Layout from "./ui/Layout";
 import "./styles/global.css";
+import Landing from "./pages/landingpage";
+// import Protected from "./components/Protected";
 import UnProtected from "./components/UnProtected";
 
 function App() {
@@ -28,8 +30,9 @@ function App() {
     <div className="App">
       <Layout>
         <Routes>
+          <Route path="/" element={<Landing/>}/>
           <Route
-            path="/"
+            path="/Home"
             element={
               <Protected>
                 <Home />

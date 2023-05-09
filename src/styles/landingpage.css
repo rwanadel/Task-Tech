@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins';
+    font-style: normal;
+    
+}
+.bodyy{
+    width: 1550px;
+    height: 750px;
+    background-image: url("landingpage.png");
+    background-repeat: no-repeat;
+    background-size:1550px 750px;
+    
+    
+    
+}
+.onlanding{
+    width: 1000px;
+    height: 750px;
+    background-image: url("onlanding.png");
+    background-repeat: no-repeat;
+    background-size:1000px 750px;
+
+    
+}
+.logo2{
+    margin-top: 10px;
+}
+.intro{
+    width: 691px;
+    height: 120px;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+    margin-top: 30px;
+    margin-left: 40px;
+}
+.intro2{
+    width: 577px;
+    height: 132px;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 33px;
+    color: #F5F5F5;
+    margin-left: 40px;
+    margin-top: 15px;
+}
+.btn-desg,.btn-desg2{
+    width: 250px;
+    height: 60px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    color: #165069;
+    
+    display: inline-block;
+    text-align: center;
+    margin-left: 40px;
+    margin-top: 20px;
+    padding-top: 12px;
+}
+.btn-desg2{
+    margin-left: 10px;
+}
+
+.toenter{
+margin-top: 40px;
+}
+
+
+.signup , .signin{
+    display: inline;
+    width: 200px;
+    height: 100px;
+    font-weight: 500;
+    font-size: 26px;
+    letter-spacing: -0.01em;
+    color: #165069;
+    text-decoration:none;
+    vertical-align: middle;
+
+}

@@ -30,7 +30,7 @@ const Navbar = () => {
 
         <ul className={`navigators ${showMenu ? "show" : ""}`}>
           <li onClick={() => setShowMenu(false)}>
-            <Link to="/">Home</Link>
+            <Link to="/home">Home</Link>
           </li>
           <li onClick={() => setShowMenu(false)}>About</li>
           <li onClick={() => setShowMenu(false)}>Services</li>

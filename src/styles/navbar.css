@@ -100,6 +100,10 @@
 .toggle-icon svg {
   font-size: 28px;
 }
+.img{
+  height: 60px;
+  
+}
 
 /* Responsive */
 @media (max-width: 992px) {

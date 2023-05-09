@@ -2,8 +2,13 @@
 
 import {  Col,  Form, Row } from "react-bootstrap";
 import "../styles/createprofile1.css"
+
 import Basic from "../components/basic-in-createprofile";
 import { Link } from "react-router-dom";
+import Skills from "../components/skills";
+import ProfilePic from "../components/uploadprofilepic";
+
+
 
 const Create1=()=>{
     return(
@@ -14,20 +19,22 @@ const Create1=()=>{
             <Basic/>
             </Col>
         </Row>
+
         <Row>
             <Col sm="12">
-                <div >  -----------borderr---------------</div>
-            
+                <div class="w3-light-grey " style={{height:"14px"}}>
+                        <div class="w3-container  w3-round-xlarge" style={{width:"25%",height:"14px",backgroundColor:"#165069"}}></div>
+                </div>
             </Col>
         </Row>
 
 
-        <Row   >
+        <Row>
         <Col  sm="4">
         <div className="box1">
 
             <Link to="/createprofile1">
-                <button  className="cat-in-box1">Basic information</button>
+                <button  className="cat-in-box1" style={{color:"#165069"}}>Basic information</button>
             </Link> <hr/>
             <Link to="/createprofile2" >
                 <button className="cat-in-box2">About Me</button>
@@ -49,8 +56,7 @@ const Create1=()=>{
             <div className="box2" >
               <Row>        {/*img */}
                 <Col sm="12">
-                    <input class="image" type="file" name="profile_photo" placeholder="Photo" required="" capture/>
-                    <br/><br/><br/><br/><br/>
+                    <ProfilePic/>
 
                 </Col>
                 </Row>
@@ -110,7 +116,11 @@ const Create1=()=>{
             </div>
 
             <div className="box3">
-                form
+                <Skills/>
+                <div className="parentto">
+                <input className="enter-skills" type="text" placeholder="Type Skill.."/>
+                <button type="submit" className="btn-for-skills">save</button>
+                </div>
             </div>
         </Form>
         </Col>
