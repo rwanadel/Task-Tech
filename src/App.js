@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import OfferDetails from "./pages/OfferDetails";
@@ -10,144 +10,157 @@ import Chats from "./pages/Chats";
 import Create1 from "./pages/createprofile1";
 import Contact from "./pages/contact";
 import Error from "./pages/error404";
-// <<<<<<< HEAD
 import Create2 from "./pages/createprofile2";
 import Create3 from "./pages/createprofile3";
-
-// =======
-// >>>>>>> 6e95646c88ea4a34b6b8ae3d873181a48b6b5e78
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import ForgotPassword from "./pages/ForgotPassword";
 import Verify from "./pages/Verify";
 import ResetPassword from "./pages/ResetPassword";
 import { PostTask } from "./pages/PostTask";
-import { useDispatch } from "react-redux";
-import { ADD_USER_DATA } from "./redux/type";
+import Protected from "./components/Protected";
+import Layout from "./ui/Layout";
 import "./styles/global.css";
-// import Protected from "./components/Protected";
+import UnProtected from "./components/UnProtected";
 
 function App() {
-  const [isSignedIn, setIsSignedin] = useState(false);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("userData"));
-    if (user?.token) {
-      setIsSignedin(true);
-      dispatch({
-        type: ADD_USER_DATA,
-        payload: user,
-      });
-    } else if (!isSignedIn) {
-      setIsSignedin(false);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
-
   return (
     <div className="App">
-      {/* <<<<<<< HEAD */}
-      {/*<Layout> */}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signUp" element={<SignUp />} />
-        <Route path="/signIn" element={<SignIn />} />
-        <Route path="/Fpassword" element={<ForgotPassword />} />
-        <Route path="/verify" element={<Verify />} />
-        <Route path="/Reset" element={<ResetPassword />} />
-        <Route path="/PostTask" element={<PostTask />} />
-        <Route path="/payment" element={<Payment />} />
-        <Route path="/notifications" element={<Notifications />} />
-        <Route path="/offer-details" element={<OfferDetails />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/post-details" element={<PostDetails />} />
-        <Route path="/chats" element={<Chats />} />
-        <Route path="/createprofile1" element={<Create1 />} />
-        <Route path="/createprofile2" element={<Create2 />} />
-        <Route path="/createprofile3" element={<Create3 />} />
-        <Route path="*" element={<Error />} />
-      </Routes>
-      {/* ======= */}
-      {/*<Layout> */}
-      {/* <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signUp" element={<SignUp />} />
-        <Route path="/signIn" element={<SignIn />} />
-        <Route path="/Fpassword" element={<ForgotPassword />} />
-        <Route path="/verify" element={<Verify />} />
-        <Route path="/Reset" element={<ResetPassword />} />
-        <Route
-          path="/PostTask"
-          element={
-            <Protected isSignedIn={isSignedIn}>
-              <PostTask />
-            </Protected>
-          }
-        />
+      <Layout>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Protected>
+                <Home />
+              </Protected>
+            }
+          />
+          <Route
+            path="/signUp"
+            element={
+              <UnProtected>
+                <SignUp />
+              </UnProtected>
+            }
+          />
+          <Route
+            path="/signIn"
+            element={
+              <UnProtected>
+                <SignIn />
+              </UnProtected>
+            }
+          />
+          <Route
+            path="/Fpassword"
+            element={
+              <UnProtected>
+                <ForgotPassword />
+              </UnProtected>
+            }
+          />
+          <Route
+            path="/verify"
+            element={
+              <UnProtected>
+                <Verify />
+              </UnProtected>
+            }
+          />
+          <Route
+            path="/Reset"
+            element={
+              <UnProtected>
+                <ResetPassword />
+              </UnProtected>
+            }
+          />
+          <Route
+            path="/PostTask"
+            element={
+              <Protected>
+                <PostTask />
+              </Protected>
+            }
+          />
 
-        <Route
-          path="/payment"
-          element={
-            <Protected isSignedIn={isSignedIn}>
-              <Payment />
-            </Protected>
-          }
-        />
+          <Route
+            path="/payment"
+            element={
+              <Protected>
+                <Payment />
+              </Protected>
+            }
+          />
 
-        <Route
-          path="/notifications"
-          element={
-            <Protected isSignedIn={isSignedIn}>
-              <Notifications />
-            </Protected>
-          }
-        />
-        <Route
-          path="/offer-details"
-          element={
-            <Protected isSignedIn={isSignedIn}>
-              <OfferDetails />
-            </Protected>
-          }
-        />
-        <Route
-          path="/contact"
-          element={
-            <Protected isSignedIn={isSignedIn}>
-              <Contact />
-            </Protected>
-          }
-        />
-        <Route
-          path="/post-details"
-          element={
-            <Protected isSignedIn={isSignedIn}>
-              <PostDetails />
-            </Protected>
-          }
-        />
-        <Route
-          path="/chats"
-          element={
-            <Protected isSignedIn={isSignedIn}>
-              <Chats />
-            </Protected>
-          }
-        />
-        <Route
-          path="/createprofile1"
-          element={
-            <Protected isSignedIn={isSignedIn}>
-              <Create1 />
-            </Protected>
-          }
-        /> */}
-      {/* <Route path="*" element={<Error />} />
-      </Routes> */}
-      {/* >>>>>>> 6e95646c88ea4a34b6b8ae3d873181a48b6b5e78 */}
-      {/*</Layout>*/}
+          <Route
+            path="/notifications"
+            element={
+              <Protected>
+                <Notifications />
+              </Protected>
+            }
+          />
+          <Route
+            path="/offer-details"
+            element={
+              <Protected>
+                <OfferDetails />
+              </Protected>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <Protected>
+                <Contact />
+              </Protected>
+            }
+          />
+          <Route
+            path="/post-details"
+            element={
+              <Protected>
+                <PostDetails />
+              </Protected>
+            }
+          />
+          <Route
+            path="/chats"
+            element={
+              <Protected>
+                <Chats />
+              </Protected>
+            }
+          />
+          <Route
+            path="/createprofile1"
+            element={
+              <Protected>
+                <Create1 />
+              </Protected>
+            }
+          />
+          <Route
+            path="/createprofile2"
+            element={
+              <Protected>
+                <Create2 />
+              </Protected>
+            }
+          />
+          <Route
+            path="/createprofile3"
+            element={
+              <Protected>
+                <Create3 />
+              </Protected>
+            }
+          />
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </Layout>
     </div>
   );
 }

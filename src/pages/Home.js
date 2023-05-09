@@ -8,7 +8,6 @@ import Layout from "../ui/Layout";
 const Home = () => {
   return (
     <div>
-      <Layout>
     <Container>
       {/* row1 vector and text */}
         <Row  >
@@ -165,7 +164,6 @@ const Home = () => {
 
 
         </Container>
-        </Layout>
     </div>
 
   )
