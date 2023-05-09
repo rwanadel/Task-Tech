@@ -93,25 +93,34 @@ const SignIn = ({ authReducer, dispatch }) => {
                 labelName={"Password"}
                 errorMessage={"Password length should be longer than 7"}
               />
-              <input className="checkbox" type="checkbox" name="Remember me" />
-              <label htmlFor="Remember me" className="Remenber">
-                {" "}
-                Remember me
-              </label>
-              <span>
-                <Link
-                  to="/Fpassword"
-                  style={{ textDecoration: "none", marginLeft: "0.5rem" }}
-                  className="fpassword"
-                >
-                  forgot password ?
-                </Link>
-              </span>
+              <div className="fpassword-wrapper">
+                <span style={{ display: "flex", alignItems: 'center' }}>
+                  <input
+                    className="checkbox"
+                    type="checkbox"
+                    name="Remember me"
+                  />
+                  <label htmlFor="Remember me" className="Remenber">
+                    {" "}
+                    Remember me
+                  </label>
+                </span>
+
+                <span style={{ display: "flex", alignItems: 'center' }}>
+                  <Link
+                    to="/Fpassword"
+                    style={{ textDecoration: "none", marginLeft: "0.5rem" }}
+                    className="fpassword"
+                  >
+                    forgot password ?
+                  </Link>
+                </span>
+              </div>
+
               <br />
-            <button onClick={OnSubmit} className="btn2">
+              <button onClick={OnSubmit} className="btn2">
                 sign in{" "}
               </button>
-              
             </div>
             <div className="line"></div>
 
