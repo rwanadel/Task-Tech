@@ -19,20 +19,34 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="container">
+<<<<<<< HEAD
         <div className="img">
         <Link to="/" className="logo">
           <img  src={Logo} alt="task-tech" />
         </Link>
         </div>
         <ul  className= {`navigators ${showMenu ? "show" : ""}`}>
+=======
+        <div >
+          <Link to="/" className="logo">
+            <img
+              src={Logo}
+              alt="task-tech"
+            />
+          </Link>
+        </div>
+
+        <ul className={`navigators ${showMenu ? "show" : ""}`}>
+>>>>>>> eb953b7694f2bb012c3a10b5b40dbe3e83bc372c
           <li onClick={() => setShowMenu(false)}>
             <Link to="/home">Home</Link>
           </li>
           <li onClick={() => setShowMenu(false)}>About</li>
+          <li onClick={() => setShowMenu(false)}>Services</li>
           <li onClick={() => setShowMenu(false)}>
-            Services
+            {" "}
+            <Link to="/contact">Contact</Link>
           </li>
-          <li onClick={() => setShowMenu(false)}> <Link to="/contact">Contact</Link></li>
 
           <li className="mobile" onClick={() => setShowMenu(false)}>
             <Link to="/chats">

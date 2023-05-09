@@ -8,14 +8,34 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import IconButton from "@mui/material/IconButton";
+import FormHelperText from "@mui/material/FormHelperText";
 
+import { isValidEmail } from "../Api/helpers";
 import logo from "../assets/logo.png";
 import Rpassword from "../assets/Rpassword.png";
 import "../styles/ResetPasssword.css";
+import { insertData } from "../Hook/useInsertData";
+import { CustomSnackbar } from "../components/customSnackbar";
+import LoaderComponents from "../components/LoaderComponents";
 
 const ResetPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [showErrors, setShowErrors] = useState(false);
+
+  const handleChange = (key, value) => {
+    setValues({
+      ...values,
+      [key]: value,
+    });
+  };
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleClickShowConfirmPassword = () =>
@@ -24,8 +44,45 @@ const ResetPassword = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+
+  const saveData = async () => {
+    try {
+      setIsLoading(true)
+      const response = await insertData("users/resetpassword", values);
+      console.log("res: ", response);
+    } catch (err) {
+      console.log("err: ", err);
+      setErrorMessage(
+        err?.response?.data?.message ?? "Error, Please try again later"
+      );
+    }
+    setIsLoading(false)
+  };
+
+  const handleSubmite = () => {
+    if (
+      isValidEmail(values.email) ||
+      values.password?.length > 7 ||
+      (values.confirmPassword?.length > 7 &&
+        values.confirmPassword === values.password)
+    ) {
+      // talk to backend
+      saveData();
+      console.log("success");
+    } else {
+      setShowErrors(true);
+    }
+  };
+
   return (
     <Container>
+      <CustomSnackbar
+        message={errorMessage}
+        handleClose={() => {
+          setErrorMessage("");
+        }}
+      />
+      <LoaderComponents open={isLoading} />
       <Row>
         <Col sm="12" className="logo-Reset">
           <img src={logo} alt="logo" />
@@ -44,24 +101,42 @@ const ResetPassword = () => {
             previously
           </div>
           <div style={{ width: "20rem", marginLeft: "1rem" }}>
-            <TextField
+            <FormControl
+              variant="outlined"
+              error={showErrors && !isValidEmail(values.email)}
               style={{
-                width: "25rem",
-                marginBottom: "30px",
-                background: "#F5F5F5",
+                marginBottom: "25px",
               }}
-              id="outlined-helperText"
-              label="E-mail"
-            />
+            >
+              <TextField
+                style={{
+                  width: "25rem",
+
+                  background: "#F5F5F5",
+                }}
+                error={showErrors && !isValidEmail(values.email)}
+                id="outlined-helperText"
+                label="E-mail"
+                value={values.email}
+                onChange={(e) => {
+                  handleChange("email", e.target.value);
+                }}
+              />
+              <FormHelperText>
+                {showErrors &&
+                  !isValidEmail(values.email) &&
+                  "This email is unvalid"}
+              </FormHelperText>
+            </FormControl>
 
             <FormControl
               style={{
                 width: "25rem",
                 marginLeft: "0.1rem",
                 marginBottom: "30px",
-                background: "#F5F5F5",
               }}
               variant="outlined"
+              error={showErrors && values.password?.length <= 7}
             >
               <InputLabel htmlFor="outlined-adornment-password">
                 Password
@@ -69,6 +144,14 @@ const ResetPassword = () => {
               <OutlinedInput
                 id="outlined-adornment-password"
                 type={showPassword ? "text" : "password"}
+                value={values.password}
+                onChange={(e) => {
+                  handleChange("password", e.target.value);
+                }}
+                style={{
+                  background: "#F5F5F5",
+                }}
+                error={showErrors && values.password?.length <= 7}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
@@ -83,6 +166,11 @@ const ResetPassword = () => {
                 }
                 label="Password"
               />
+              <FormHelperText>
+                {showErrors &&
+                  values.password?.length <= 7 &&
+                  "Password length should be longer than 7 "}
+              </FormHelperText>
             </FormControl>
 
             <FormControl
@@ -90,8 +178,12 @@ const ResetPassword = () => {
                 width: "25rem",
                 marginLeft: "0.1rem",
                 marginBottom: "10px",
-                background: "#F5F5F5",
               }}
+              error={
+                showErrors &&
+                (values.confirmPassword?.length <= 7 ||
+                  values.confirmPassword !== values.password)
+              }
               variant="outlined"
             >
               <InputLabel
@@ -103,7 +195,19 @@ const ResetPassword = () => {
 
               <OutlinedInput
                 id="outlined-adornment-confirm-password"
-                type={showPassword ? "text" : "password"}
+                type={showConfirmPassword ? "text" : "password"}
+                value={values.confirmPassword}
+                onChange={(e) => {
+                  handleChange("confirmPassword", e.target.value);
+                }}
+                style={{
+                  background: "#F5F5F5",
+                }}
+                error={
+                  showErrors &&
+                  (values.confirmPassword?.length <= 7 ||
+                    values.confirmPassword !== values.password)
+                }
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
@@ -112,16 +216,24 @@ const ResetPassword = () => {
                       onMouseDown={handleMouseDownPassword}
                       edge="end"
                     >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                      {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
                 }
                 label="confirm password"
               />
+              <FormHelperText>
+                {showErrors &&
+                  (values.confirmPassword?.length <= 7 ||
+                    values.confirmPassword !== values.password) &&
+                  "password isn't confirmed "}
+              </FormHelperText>
             </FormControl>
           </div>
           <div>
-            <button className="btn1-Reset">Save</button>
+            <button onClick={handleSubmite} className="btn1-Reset">
+              Save
+            </button>
           </div>
         </Col>
       </Row>
