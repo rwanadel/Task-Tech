@@ -25,6 +25,7 @@ import { PostTask } from "./pages/PostTask";
 import { useDispatch } from "react-redux";
 import { ADD_USER_DATA } from "./redux/type";
 import "./styles/global.css";
+import Landing from "./pages/landingpage";
 // import Protected from "./components/Protected";
 
 function App() {
@@ -51,7 +52,8 @@ function App() {
       {/* <<<<<<< HEAD */}
       {/*<Layout> */}
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Landing />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/Fpassword" element={<ForgotPassword />} />

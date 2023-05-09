@@ -19,12 +19,14 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="container">
+        <div className="img">
         <Link to="/" className="logo">
-          <img src={Logo} alt="task-tech" />
+          <img  src={Logo} alt="task-tech" />
         </Link>
-        <ul className= {`navigators ${showMenu ? "show" : ""}`}>
+        </div>
+        <ul  className= {`navigators ${showMenu ? "show" : ""}`}>
           <li onClick={() => setShowMenu(false)}>
-            <Link to="/">Home</Link>
+            <Link to="/home">Home</Link>
           </li>
           <li onClick={() => setShowMenu(false)}>About</li>
           <li onClick={() => setShowMenu(false)}>
