@@ -22,15 +22,22 @@ import Protected from "./components/Protected";
 import Layout from "./ui/Layout";
 import "./styles/global.css";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Landing from "./pages/landingpage";
 // import Protected from "./components/Protected";
 =======
 import UnProtected from "./components/UnProtected";
 >>>>>>> eb953b7694f2bb012c3a10b5b40dbe3e83bc372c
+=======
+import Landing from "./pages/landingpage";
+// import Protected from "./components/Protected";
+import UnProtected from "./components/UnProtected";
+>>>>>>> 87727242669452e7fcefdaba338e037bb7704427
 
 function App() {
   return (
     <div className="App">
+<<<<<<< HEAD
 <<<<<<< HEAD
       {/* <<<<<<< HEAD */}
       {/*<Layout> */}
@@ -72,10 +79,13 @@ function App() {
           }
         />
 =======
+=======
+>>>>>>> 87727242669452e7fcefdaba338e037bb7704427
       <Layout>
         <Routes>
+          <Route path="/" element={<Landing/>}/>
           <Route
-            path="/"
+            path="/Home"
             element={
               <Protected>
                 <Home />
@@ -130,7 +140,10 @@ function App() {
               </Protected>
             }
           />
+<<<<<<< HEAD
 >>>>>>> eb953b7694f2bb012c3a10b5b40dbe3e83bc372c
+=======
+>>>>>>> 87727242669452e7fcefdaba338e037bb7704427
 
           <Route
             path="/payment"

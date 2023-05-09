@@ -20,6 +20,7 @@ const Navbar = () => {
     <div className="navbar">
       <div className="container">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <div className="img">
         <Link to="/" className="logo">
           <img  src={Logo} alt="task-tech" />
@@ -27,6 +28,8 @@ const Navbar = () => {
         </div>
         <ul  className= {`navigators ${showMenu ? "show" : ""}`}>
 =======
+=======
+>>>>>>> 87727242669452e7fcefdaba338e037bb7704427
         <div >
           <Link to="/" className="logo">
             <img
@@ -37,7 +40,10 @@ const Navbar = () => {
         </div>
 
         <ul className={`navigators ${showMenu ? "show" : ""}`}>
+<<<<<<< HEAD
 >>>>>>> eb953b7694f2bb012c3a10b5b40dbe3e83bc372c
+=======
+>>>>>>> 87727242669452e7fcefdaba338e037bb7704427
           <li onClick={() => setShowMenu(false)}>
             <Link to="/home">Home</Link>
           </li>
