@@ -9,6 +9,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import IconButton from "@mui/material/IconButton";
 import FormHelperText from "@mui/material/FormHelperText";
+import { useNavigate } from "react-router-dom";
 
 import { isValidEmail } from "../Api/helpers";
 import logo from "../assets/logo.png";
@@ -19,6 +20,7 @@ import { CustomSnackbar } from "../components/customSnackbar";
 import LoaderComponents from "../components/LoaderComponents";
 
 const ResetPassword = () => {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -48,8 +50,9 @@ const ResetPassword = () => {
   const saveData = async () => {
     try {
       setIsLoading(true)
-      const response = await insertData("users/resetpassword", values);
-      console.log("res: ", response);
+      const response = await insertData("users/resetpassword", values ,'patch');
+      navigate('/signIn');
+      
     } catch (err) {
       console.log("err: ", err);
       setErrorMessage(

@@ -30,9 +30,16 @@ function App() {
     <div className="App">
       <Layout>
         <Routes>
-          <Route path="/" element={<Landing/>}/>
           <Route
-            path="/Home"
+            path="/"
+            element={
+              <UnProtected>
+                <Landing />
+              </UnProtected>
+            }
+          />
+          <Route
+            path="/home"
             element={
               <Protected>
                 <Home />

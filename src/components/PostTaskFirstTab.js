@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Col, Form, Row } from "react-bootstrap";
 import TextField from "@mui/material/TextField";
 import FormControl from "@mui/material/FormControl";
@@ -25,7 +25,18 @@ export const FirstTabComponent = ({ setIsLoading, setErrorMessage } ) => {
     catogery: "",
   });
 
-  const categpries = ['Web Design', 'Marketing', 'Business' ,'Software Engineering' , 'Web Developer', 'App Developer' ,'Product Manager' , 'Accountant,Ui/Ux Design' , 'Graphics Designer']
+  const categpries = [
+    "Web Design",
+    "Marketing",
+    "Business",
+    "Software Engineering",
+    "Web Developer",
+    "App Developer",
+    "Product Manager",
+    "Accountant",
+    "Ui/Ux Design",
+    "Graphics Designer",
+  ];
 
   const handleChange = (key, value) => {
     setValues({
@@ -38,9 +49,8 @@ export const FirstTabComponent = ({ setIsLoading, setErrorMessage } ) => {
     try {
       setIsLoading(true);
       const response = await insertData("posts", values);
-      console.log("res: ", response);
     } catch (err) {
-      console.log("err: ", err);
+      console.log("err" , err)
       setErrorMessage(
         err?.response?.data?.message ?? "Error, Please try again later"
       );
@@ -48,13 +58,48 @@ export const FirstTabComponent = ({ setIsLoading, setErrorMessage } ) => {
     setIsLoading(false);
   };
 
- 
+  const getSalaryErrorMessage = useCallback(() => {
+    const { salary, catogery } = values;
+
+    if (
+      catogery === "Web Design" ||
+      catogery === "Ui/Ux Design" ||
+      catogery === "Graphics Designer"
+    ) {
+      if (salary > 50 && salary <= 70) {
+        return "";
+      }
+      return "Salary for this category must be between 50$ to 70$";
+    } else if (
+      catogery === "Business" ||
+      catogery === "Product Manager" ||
+      catogery === "Marketing"
+    ) {
+      if (salary > 70 && salary <= 100) {
+        return "";
+      }
+      return "Salary for this category must be between 70$ to 100$";
+    } else if (
+      catogery === "Software Engineering" ||
+      catogery === "Web Developer" ||
+      catogery === "App Developer" ||
+      catogery === "Accountant"
+    ) {
+      if (salary >= 60 && salary <= 120) {
+        return "";
+      }
+      return "Salary for this category must be between 60$ to 120$";
+    } else {
+      return 'Please choose category, and add the salary value'
+    }
+  }, [values.catogery, values.salary])
+
 
   const OnSubmit = () => {
     if (
       values.name.length === 0 ||
       values.description.length === 0 ||
-      Number(values.salary) === 0 ||
+      getSalaryErrorMessage()?.length > 0 ||
       values.catogery.length === 0 ||
       Number(values.delieveryDate) === 0
     ) {
@@ -66,7 +111,7 @@ export const FirstTabComponent = ({ setIsLoading, setErrorMessage } ) => {
   };
 
   return (
-    <>
+    <Form sx={{ boxShadow: '20px 20px 20px' }}>
       <Row>
         <Col sm="3"></Col>
         <Col sm="6">
@@ -170,7 +215,6 @@ export const FirstTabComponent = ({ setIsLoading, setErrorMessage } ) => {
                           : moment(values.delieveryDate)
                       }
                       onChange={(e) => {
-                        console.log("djsgfk: ", e);
                         handleChange("delieveryDate", moment(e).format("X"));
                       }}
                     />
@@ -192,7 +236,7 @@ export const FirstTabComponent = ({ setIsLoading, setErrorMessage } ) => {
               </label>
               <FormControl
                 sx={{ m: 1 }}
-                error={showErrors && Number(values.salary) === 0}
+                error={showErrors &&getSalaryErrorMessage()?.length > 0}
                 fullWidth
                 variant="outlined"
               >
@@ -204,14 +248,14 @@ export const FirstTabComponent = ({ setIsLoading, setErrorMessage } ) => {
                   onChange={(e) => {
                     handleChange("salary", e.target.value);
                   }}
-                  error={showErrors && Number(values.salary) === 0}
+                  error={showErrors && getSalaryErrorMessage()?.length > 0}
                   fullWidth
                   style={{ background: "#F5F5F5" }}
                 />
                 <FormHelperText>
                   {showErrors &&
-                    Number(values.salary) === 0 &&
-                    "Salary should be longer than 1000"}
+                    getSalaryErrorMessage()?.length > 0 &&
+                    getSalaryErrorMessage()}
                 </FormHelperText>
               </FormControl>
             </div>
@@ -263,7 +307,7 @@ export const FirstTabComponent = ({ setIsLoading, setErrorMessage } ) => {
               >
                 catogery
               </label>
-              <FormControl fullWidth error={showErrors && values.catogery.length === 0}>
+              <FormControl fullWidth style={{marginLeft:"12px"}} error={showErrors && values.catogery.length === 0}>
                 <Select
                   id="category"
                   value={values.catogery}
@@ -321,6 +365,6 @@ export const FirstTabComponent = ({ setIsLoading, setErrorMessage } ) => {
         </Col>
         <Col sm="3"></Col>
       </Row>
-    </>
+    </Form>
   );
 };

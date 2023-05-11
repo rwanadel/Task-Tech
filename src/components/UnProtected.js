@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 function UnProtected({ children }) {
   const userData = useSelector((state) => state.authReducer.userData);
   if (userData?.token) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/home" replace />;
   }
   return children;
 }
