@@ -69,15 +69,26 @@ const TabsNavigation = () => {
           setErrorMessage("");
         }}
       />
-      <AppBar position="static">
+      <AppBar
+        position="static"
+        style={{
+          boxShadow: "none",
+        }}
+      >
         <Tabs
           value={value}
           onChange={handleChange}
-          indicatorColor="primary"
+          TabIndicatorProps={{
+            style: {
+              background: "#165069",
+              fontSize: "2rem",
+              height: "0.5rem",
+              borderRadius: "5px",
+            },
+          }}
           style={{
             background: "#FFFFFF",
             color: "#165069",
-            boxShadow: "none",
           }}
           textColor="inherit"
           variant="fullWidth"

@@ -1,18 +1,21 @@
 import baseUrl from "../Api/baseURL";
 
-const insertData = async (url, parmas) => {
+const insertData = async (url, parmas, method = 'POST') => {
   const userData = JSON.parse(localStorage.getItem("userData"));
-  let config;
+  let headers;
 
   if (userData?.token) {
-    config = {
-      headers: {
+      headers = {
         Authorization: `Bearer ${userData.token}`,
-      },
-    };
+      };
   }
 
-  const res = await baseUrl.post(url, parmas, config);
+  const res = await baseUrl({
+    method,
+    url,
+    data: parmas,
+    headers,
+  });
   return res;
 };
 export { insertData };

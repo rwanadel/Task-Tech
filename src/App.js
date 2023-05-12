@@ -83,9 +83,16 @@ function App() {
 >>>>>>> 87727242669452e7fcefdaba338e037bb7704427
       <Layout>
         <Routes>
-          <Route path="/" element={<Landing/>}/>
           <Route
-            path="/Home"
+            path="/"
+            element={
+              <UnProtected>
+                <Landing />
+              </UnProtected>
+            }
+          />
+          <Route
+            path="/home"
             element={
               <Protected>
                 <Home />

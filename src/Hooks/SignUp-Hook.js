@@ -14,10 +14,10 @@ const SignUpHook = () => {
   const [showErrors, setShowErrors] = useState(false);
 
   const onChange = (key, e) => {
-    setValues((prevState) => ({
-      ...prevState,
-      [key]: e.target.value,
-    }));
+    setValues({
+      ...values,
+      [key]: e.target.value
+    });
   };
 
   const validationValue = () => {
