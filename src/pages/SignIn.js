@@ -42,8 +42,8 @@ const SignIn = ({ authReducer, dispatch }) => {
         }}
       />
       <LoaderComponents open={isLoading} />
-      <Container>
-        <Row>
+      <Container  >
+        <Row >
           <Col sm="12">
             <div className="logo-signUp">
               <img src={logo} alt="logo" />
@@ -51,7 +51,7 @@ const SignIn = ({ authReducer, dispatch }) => {
           </Col>
         </Row>
         <Row className="justify-content-center">
-          <Col sm="6">
+          <Col sm="5">
             <div className="signUp">
               <img src={signUp} alt="signUp" style={{ width: "30rem" }} />
             </div>
