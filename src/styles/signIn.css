@@ -15,7 +15,7 @@
     margin-left: 20px;
     
 }
-.text2{
+.text22{
     color: rgb(177, 177, 177);
     text-align: left;
     font-size: 23px;
@@ -70,6 +70,7 @@
     margin-top: 20px;
     color: #FFF;
     transition: all 0.3s ease ;
+    border: none;
 }
 .line{
     position: relative;

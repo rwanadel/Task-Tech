@@ -60,7 +60,7 @@ const SignIn = ({ authReducer, dispatch }) => {
             <div className="text1">
               <h3>Welcome Back,</h3>
             </div>
-            <div className="text2">Please login to continue ..</div>
+            <div className="text22">Please login to continue ..</div>
             <div style={{ width: "20rem", marginLeft: "1rem" }}>
               {/* <input className="data" type="text" placeholder="Email" /><br /> */}
               <FormControl

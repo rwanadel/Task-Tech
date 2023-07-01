@@ -1,13 +1,30 @@
 import { Container,Row,Col } from "react-bootstrap";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/home.css"
 import Layout from "../ui/Layout";
+import FreelancerCard from "../components/FreelancerCard";
+import Postcard from "../components/postcard";
+import axios from "axios";
 
 
 
 const Home = () => {
+  /*const [topusers,settopuser]=useState([])
+  //get top users in highest reated freelancer
+ const topuser=async()=>{
+    const res = await axios.get("https://task-teck.onrender.com/api/v1/users/topuser")
+    //console.log(res.data.data.users)
+    settopuser(res.data.data.users)
+    console.log(res.data.data.users)
+    }
+    useEffect(()=>{
+      topuser()
+      console.log(topusers)
+    },[])*/
+
   return (
     <div>
+    <Layout>
     <Container>
       {/* row1 vector and text */}
         <Row  >
@@ -131,6 +148,53 @@ const Home = () => {
         </div>
       </Col>
       </Row>
+      {/* row7 post*/}
+      <Row>
+      <Col sm='6'>
+      <div className="recently-text">
+      Recently Posts
+      </div>
+      </Col>
+      <Col sm='6' >
+      <Row className="m">
+      <Col sm='3'><button className="btn-All">All</button></Col>
+      <Col sm='3'><button className="btn-web">Web Design</button></Col>
+      <Col sm='3'><button className="btn-bess">Business</button></Col>
+      <Col sm='3'><button className="btn-mark">Marketing</button></Col>
+      </Row>
+      </Col>
+      </Row>
+      <Row>
+      <Col sm='3'>
+          <Postcard/>
+        </Col>
+        <Col sm='3'>
+        <Postcard/>
+        </Col>
+        <Col sm='3'>
+        <Postcard/>
+        </Col>
+        <Col sm='3'>
+        <Postcard/>
+        </Col>
+      </Row>
+      {/* row8 high*/}
+      <Row>
+         <span className="high">Highest Rated Freelancers</span>
+        
+        <Col sm='3'>
+          <FreelancerCard />
+        </Col>
+        <Col sm='3'>
+          <FreelancerCard />
+        </Col>
+        <Col sm='3'>
+          <FreelancerCard />
+        </Col>
+        <Col sm='3'>
+          <FreelancerCard />
+        </Col>
+      </Row>
       
 
 
@@ -164,6 +228,7 @@ const Home = () => {
 
 
         </Container>
+        </Layout>
     </div>
 
   )

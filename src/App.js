@@ -29,7 +29,7 @@ import UnProtected from "./components/UnProtected";
 function App() {
   return (
     <div className="App">
-      <Layout>
+      
         <Routes>
           <Route
             path="/"
@@ -171,7 +171,7 @@ function App() {
           />
           <Route path="*" element={<Error />} />
         </Routes>
-      </Layout>
+     
     </div>
   );
 }
