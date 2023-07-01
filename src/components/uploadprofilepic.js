@@ -1,26 +1,39 @@
-import { useState } from "react";
+import { Avatar } from "@mui/material";
+import { useRef, useState } from "react";
+import"../styles/uploadprofilepic.css";
 
 const ProfilePic=()=>{
-    const [selectedFile, setSelectedFile] = useState(null);
-    const [previewUrl, setPreviewUrl] = useState("");
+    const [image,setImage]=useState("")
+    const inputref=useRef(null);
 
-    const handleFileInputChange = (event) => {
-    const file = event.target.files[0];
-    setSelectedFile(file);
-    setPreviewUrl(URL.createObjectURL(file));
-    };
+    const handleImageClick=()=>{
+        inputref.current.click();
+    }
 
-    const handleSubmit = (event) => {
-    event.preventDefault();
-    // Send the selected file to the server
-    };
+    const handleImageChange=(event)=>{
+        const file =event.target.files[0];
+        console.log(file)
+        setImage(event.target.files[0] );
+    }
+    
 
 return (
-    <form onSubmit={handleSubmit}>
+    <div>
+    <div  onClick={handleImageClick}>
+    
+    {
+        image?(<img className="pic" alt="Remy Sharp" src={URL.createObjectURL(image)}/>):
+    (<img className="pic" alt="Remy Sharp" src="uploadphoto.png"/>)
+}
+    <input type="file" ref={inputref} onChange={handleImageChange} style={{display:"none"}}/>
+    {/*<form onSubmit={handleSubmit}>
         <input type="file" onChange={handleFileInputChange} accept="image/*" />
         {previewUrl && <img src={previewUrl} alt="Preview" />}
         <button type="submit">Upload</button>
-    </form>
+</form>*/}
+    </div>
+    <div className="upload-btn2" onClick={handleImageClick}>+   Upload Photo</div>
+    </div>
 );
 }
 export default ProfilePic;

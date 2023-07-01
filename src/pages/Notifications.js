@@ -7,9 +7,11 @@ import NotificationSection from "../components/NotificationSection";
 import "../styles/notifications.css";
 import Layout from "../ui/Layout";
 
+
 const Notifications = () => {
   return (
-    <div><Layout>
+    <div>
+    <Layout>
     <div className="notifications">
       <div className="container">
         <h2 className="page-title">Notifications</h2>
@@ -29,7 +31,8 @@ const Notifications = () => {
         />
       </div>
     </div>
-    </Layout></div>
+    </Layout>
+    </div>
   );
 };
 

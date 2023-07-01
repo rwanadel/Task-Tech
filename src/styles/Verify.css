@@ -9,7 +9,7 @@
     margin-left: 20px;
     
 }
-.text2{
+.text2-ver{
     color: rgb(177, 177, 177);
     text-align: left;
     font-size: 20px;
@@ -38,6 +38,7 @@
     margin-top: 50px;
     color: #FFF;
     transition: all 0.3s ease ;
+    border: none;
 
 }
 .trans-Verify{

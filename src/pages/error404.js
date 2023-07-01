@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Error=()=>{
     return(
         <div>
-            <Layout>
+            
             <div>
                 <Container>
                     
@@ -36,7 +36,7 @@ const Error=()=>{
                     
                 </Container>
                 </div>
-            </Layout>
+           
         </div>
     )
 }

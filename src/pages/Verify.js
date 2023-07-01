@@ -83,7 +83,7 @@ const Verify = () => {
           <div className="text1">
             <h3>Verification Code</h3>
           </div>
-          <div className="text2">
+          <div className="text2-ver">
             Enter the verification code we just sent you on <br /> your email
             adress .
           </div>

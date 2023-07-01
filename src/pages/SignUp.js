@@ -60,7 +60,7 @@ const SignUp = ({ authReducer, dispatch }) => {
           <div className="text1">
             <h3>Create an account,</h3>
           </div>
-          <div className="text2">Let’s create account together</div>
+          <div className="text222">Let’s create account together</div>
           <div style={{ width: "20rem", marginLeft: "1rem" }}>
             <FormControl
               sx={{ m: 1 }}
@@ -126,10 +126,11 @@ const SignUp = ({ authReducer, dispatch }) => {
             />
             {/* <input value={confirmPassword} onChange={OnchangeConfirmPassword} className="data" type="password" placeholder="confirm password" /><br />
               <i className='bx bx-hide eye-icon2'></i> */}
-
+            <Link to="/createprofile1">
             <button onClick={OnSubmit} className="btn">
               sign Up{" "}
             </button>
+            </Link>
           </div>
           <div className="line"></div>
         </Col>

@@ -13,9 +13,11 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import Layout from "../ui/Layout";
 
+
 const Payment = () => {
   return (
-    <div><Layout>
+    <div>
+    <Layout>
     <div className="payment">
     
       <div className="container">
@@ -145,7 +147,8 @@ const Payment = () => {
       </div>
     
     </div>
-    </Layout></div>
+    </Layout>
+    </div>
   );
 };
 

@@ -9,7 +9,7 @@ import Select from "@mui/material/Select";
 import "../styles/freelancers.css";
 import FreelancerCard from "./FreelancerCard";
 
-const FreeLancers = () => {
+const FreeLancers = ({topusers}) => {
   const [sort, setSort] = React.useState("");
 
   const handleChange = (event) => {
@@ -42,13 +42,18 @@ const FreeLancers = () => {
       </div>
 
       <div className="freelancers-contanier">
-        <FreelancerCard />
-        <FreelancerCard />
-        <FreelancerCard />
-        <FreelancerCard />
-        <FreelancerCard />
-        <FreelancerCard />
-        <FreelancerCard />
+      {/*
+        topusers.lenght>=1?(topusers.map((u)=>{
+          return(<FreelancerCard key={u.id} u={u} />)
+        })) : <h1>No Found</h1>
+      */}
+        <FreelancerCard topusers={topusers} />
+        <FreelancerCard topusers={topusers}/>
+        <FreelancerCard topusers={topusers}/>
+        <FreelancerCard topusers={topusers}/>
+        <FreelancerCard topusers={topusers}/>
+        <FreelancerCard topusers={topusers}/>
+    <FreelancerCard topusers={topusers}/>
       </div>
     </div>
   );
