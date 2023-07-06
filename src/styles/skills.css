@@ -1,15 +1,24 @@
 .btn-skills-nonclicked{
     box-sizing: border-box;
-    width: 185px;
-    height: 55px;
+    width: 200px;
+    height: 65px;
     border: 1px solid #D9D9D9;
     border-radius: 25px;
+    display: inline-block;
+    margin: 10px;
+    background: #FFF;;
+    cursor: pointer;
+    color: rgba(166, 166, 166, 0.80);
+   font-size: 23px;
+   font-family: Poppins;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 23.957px;
+   letter-spacing: -0.599px;
+   text-align: center;
+   padding-top:18px ;
+}
 
-}
-.btn-skills-onclicked{
-    width: 214px;
-    height: 55px;
-    background: #165069;
-    box-shadow: 0px 2px 4px rgba(22, 80, 105, 0.74);
-    border-radius: 25px;
-}
+
+
+

@@ -42,7 +42,7 @@ const Create1=()=>{
             <Link to="/createprofile3" >
                 <button className="cat-in-box3">Education</button>
             </Link> <hr/>
-            <Link to="/createprofile4" >
+            <Link to="/viewprofile1" >
                 <button className="cat-in-box4">view Profile</button>
             </Link>
             </div>
@@ -52,7 +52,7 @@ const Create1=()=>{
 
 
         <Col sm="8">
-        <Form>
+        <Form>   {/*-------------------------------------------------------------------*/}
             <div className="box2" >
               <Row>        {/*img */}
                 <Col sm="12">

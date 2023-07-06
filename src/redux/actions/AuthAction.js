@@ -15,7 +15,7 @@ export const createNewUser = (data) => async (dispatch) => {
   const { setLoading, ...restData } = data;
   try {
     setLoading(true);
-    const response = await insertData(`users/signup`, restData);
+    const response = await insertData(`register`, restData);
     setLoading(false);
   
     dispatch({

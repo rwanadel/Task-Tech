@@ -3,6 +3,7 @@ import BreadCrumbs from "../components/BreadCrumbs";
 import CategoriesNavbar from "../components/CategoriesNavbar";
 import Filters from "../components/Filters";
 import FreeLancers from "../components/FreeLancers";
+import baseUrl from "../Api/baseURL"
 
 // Import styles
 import "../styles/services.css";
@@ -17,7 +18,7 @@ const Contact = () => {
     const res = await axios.get("https://task-teck.onrender.com/api/v1/users/topuser")
     //console.log(res.data.data.users)
     settopuser(res.data.data.users)
-    console.log(res.data.data.users)
+    console.log(res.data.data)
     }
     useEffect(()=>{
       topuser()

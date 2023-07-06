@@ -126,8 +126,8 @@ const SignUp = ({ authReducer, dispatch }) => {
             />
             {/* <input value={confirmPassword} onChange={OnchangeConfirmPassword} className="data" type="password" placeholder="confirm password" /><br />
               <i className='bx bx-hide eye-icon2'></i> */}
-            <Link to="/createprofile1">
-            <button onClick={OnSubmit} className="btn">
+            <Link to="/createprofile3">
+            <button onClick={OnSubmit} className="btn-signup">
               sign Up{" "}
             </button>
             </Link>
