@@ -4,6 +4,7 @@
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   padding: 30px 10px;
   border-radius: 15px;
+  height: 400px;
 }
 
 .freelancer-photo {
@@ -12,6 +13,10 @@
   border-radius: 50%;
   overflow: hidden;
   margin: 0 auto;
+  background-image: url(user.png);
+  background-repeat: no-repeat;
+  background-size: 100%,100%;
+  background-position: 100%;
 }
 .freelancer-photo img {
   width: 100%;
@@ -50,8 +55,9 @@
   font-weight: 600;
 }
 
-.freelancer-rates p {
+.reve {
   color: #7c7c7c;
+  font-size: 13px;
 }
 
 .freelancer-skills {
@@ -83,6 +89,8 @@
   margin-top: 25px;
   transition: 0.5s;
   cursor: pointer;
+  
+  
 }
 
 .freelancer-card button:hover {

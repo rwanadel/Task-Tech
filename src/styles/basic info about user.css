@@ -1,0 +1,73 @@
+*{
+    font-family: Poppins;
+    font-style: normal;
+}
+
+.star-active{
+    color: #ffc107;
+    font-size: 22px;
+}
+.star{
+    font-size: 22px;
+}
+.info{
+    margin-top: 30px;
+    margin-left: 335px;
+   
+    
+}
+.user-name{
+    font-weight: 550;
+    font-size: 30px;
+    line-height: 24px;
+    letter-spacing: -0.598929px;
+    color: #000000;
+    margin-left: 20px;
+
+}
+.job{
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 20px;
+    letter-spacing: -0.598929px;
+    color:#7C7C7C;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.all-stars{
+    margin-left: 20px;
+}
+.twobtn{
+    margin-top: 40px;
+    
+}
+.M-btn{
+    width: 251px;
+height: 68px;
+border-radius: 10px;
+border: 2px solid #165069;
+background: #FFF;
+color: #165069;
+font-size: 24px;
+
+font-weight: 500;
+line-height: 20px;
+letter-spacing: -0.5px;
+margin-left: 150px;
+}
+.F-btn{
+    width: 251px;
+height: 68px;
+
+
+border-radius: 10px;
+background: #165069;
+color: #FFF;
+font-size: 24px;
+
+font-weight: 500;
+line-height: 20px;
+letter-spacing: -0.5px;
+border: none;
+}

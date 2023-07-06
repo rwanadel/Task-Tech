@@ -36,6 +36,7 @@ const Navbar = () => {
             {" "}
             <Link to="/contact">Contact</Link>
           </li>
+          
 
           <li className="mobile" onClick={() => setShowMenu(false)}>
             <Link to="/chats">
@@ -49,10 +50,15 @@ const Navbar = () => {
               <span>Notifications</span>
             </Link>
           </li>
+
+          
+
+
           <li className="mobile" onClick={() => setShowMenu(false)}>
             <CgProfile />
             <span>Profile</span>
           </li>
+          <li onClick={() => setShowMenu(false)}><Link to="/PostTask"><button className="btn-to-post-task">Post a task</button></Link></li>
         </ul>
 
         <div className="user-data">
@@ -65,13 +71,17 @@ const Navbar = () => {
             <span className="badge">2</span>
           </Link>
 
+          
+
           <div className="user-profile">
-            <img src={UserImg} alt="username" />
+            <Link to="/viewprofile1"><img src={UserImg} alt="username" /></Link>
           </div>
+          
         </div>
         <div className="toggle-icon" onClick={() => setShowMenu(!showMenu)}>
           <RiMenu3Fill />
         </div>
+        
       </div>
     </div>
   );

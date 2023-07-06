@@ -112,7 +112,7 @@ const Create3=()=>{
             <Link to="/createprofile3" >
                 <button className="cat-in-box3"style={{color:"#165069"}}>Education</button>
             </Link> <hr/>
-            <Link to="/createprofile4" >
+            <Link to="/viewprofile1" >
                 <button className="cat-in-box4">view Profile</button>
             </Link>
         </div>

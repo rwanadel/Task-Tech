@@ -5,22 +5,40 @@ import Layout from "../ui/Layout";
 import FreelancerCard from "../components/FreelancerCard";
 import Postcard from "../components/postcard";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import gettopusersaction from "../redux/actions/topusersAction";
+import getrelatedpostsAction from "../redux/actions/relatedpostsAction";
 
 
 
 const Home = () => {
-  /*const [topusers,settopuser]=useState([])
-  //get top users in highest reated freelancer
- const topuser=async()=>{
-    const res = await axios.get("https://task-teck.onrender.com/api/v1/users/topuser")
-    //console.log(res.data.data.users)
-    settopuser(res.data.data.users)
-    console.log(res.data.data.users)
-    }
+  
+  //to get top users---------------------------------------------------------
+    const dispatchh=useDispatch();
     useEffect(()=>{
-      topuser()
-      console.log(topusers)
-    },[])*/
+      dispatchh(gettopusersaction())   //هنا انا بجيب الاكشن اللي عايزه انفذه
+    },[])
+  
+    const high=useSelector(state=>state.topusersReducer.users) //انا هنا باكسس الداتا بتاعتي عن طريق الريديوسر
+    const loading=useSelector(state=>state.topusersReducer.loading)
+    //console.log(high.users)
+    //console.log(high.users[0].skills)
+    //console.log(loading) 
+    //-------------------------------------------------------------------------
+
+    // to get related posts
+    const dispatchh2=useDispatch();
+    useEffect(()=>{
+      dispatchh2(getrelatedpostsAction())   //هنا انا بجيب الاكشن اللي عايزه انفذه
+    },[])
+  
+    const relatedpost=useSelector(state=>state.relatesposts.posts) //انا هنا باكسس الداتا بتاعتي عن طريق الريديوسر
+    const loadingposts=useSelector(state=>state.relatesposts.loading)
+    //console.log(relatedpost)
+    
+    //console.log(loadingposts) 
+
+    //----------------------------------------------------------------------------------
 
   return (
     <div>
@@ -148,11 +166,11 @@ const Home = () => {
         </div>
       </Col>
       </Row>
-      {/* row7 post*/}
+      {/* row7 post------------------------------------------------------*/}
       <Row>
       <Col sm='6'>
       <div className="recently-text">
-      Recently Posts
+      Related Posts
       </div>
       </Col>
       <Col sm='6' >
@@ -164,7 +182,7 @@ const Home = () => {
       </Row>
       </Col>
       </Row>
-      <Row>
+      <Row> {/*-------------------------------- */}
       <Col sm='3'>
           <Postcard/>
         </Col>
@@ -178,27 +196,31 @@ const Home = () => {
         <Postcard/>
         </Col>
       </Row>
-      {/* row8 high*/}
+      {/* row8 high top users-----------*/}
       <Row>
          <span className="high">Highest Rated Freelancers</span>
         
-        <Col sm='3'>
-          <FreelancerCard />
-        </Col>
-        <Col sm='3'>
-          <FreelancerCard />
-        </Col>
-        <Col sm='3'>
-          <FreelancerCard />
-        </Col>
-        <Col sm='3'>
-          <FreelancerCard />
-        </Col>
+         {
+          high.users?(
+            high.users.slice(0,4).map((item)=>{
+              return(
+
+            <Col sm='3'>
+            <FreelancerCard title2={item.name} img={item.photo}
+             job={item.job} rate={item.ratingsAverage}
+              reve={item.ratingsQuantity} skill1={item.skills[0]} 
+              skill2={item.skills[1]} skill3={item.skills[2]}/>
+              </Col>
+              
+              )})
+             ):null
+         }
+       
       </Row>
       
+     
 
-
-      {/* row9 downloed app*/}
+      {/* row9 downloed app------------------------------------------------*/}
         
       
           <div className="box-to-app">

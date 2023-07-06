@@ -25,6 +25,9 @@ import "./styles/global.css";
 import Landing from "./pages/landingpage";
 // import Protected from "./components/Protected";
 import UnProtected from "./components/UnProtected";
+import Viewprofile1 from "./pages/viewprofile1";
+import Viewprofile3 from "./pages/viewprofile3";
+import Viewprofile2 from "./pages/viewprofile2";
 
 function App() {
   return (
@@ -166,6 +169,31 @@ function App() {
             element={
               <Protected>
                 <Create3 />
+              </Protected>
+            }
+          />
+
+          <Route
+            path="/viewprofile1"
+            element={
+              <Protected>
+                <Viewprofile1 />
+              </Protected>
+            }
+          />
+          <Route
+            path="/viewprofile2"
+            element={
+              <Protected>
+                <Viewprofile2 />
+              </Protected>
+            }
+          />
+          <Route
+            path="/viewprofile3"
+            element={
+              <Protected>
+                <Viewprofile3 />
               </Protected>
             }
           />
