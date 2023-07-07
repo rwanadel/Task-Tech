@@ -7,6 +7,8 @@ import {
 } from "../type";
 
 import { insertData } from "../../Hook/useInsertData";
+import axios from "axios";
+import { BackendURL } from "../../constants";
 // import { useGetData, useGetDataToken } from './../../hooks/useGetData';
 // import { useInsUpdateData } from '../../hooks/useUpdateData';
 
@@ -15,7 +17,11 @@ export const createNewUser = (data) => async (dispatch) => {
   const { setLoading, ...restData } = data;
   try {
     setLoading(true);
-    const response = await insertData(`register`, restData);
+    // const response = await insertData(`register`, restData);
+    const response = await axios.post(BackendURL+'/register', restData);
+    if(response.status === 200){
+      axios.defaults.headers.common.Authorization = `Bearer ${response.data.token}`;
+    }
     setLoading(false);
   
     dispatch({
@@ -55,7 +61,11 @@ export const SignInUser = (data) => async (dispatch) => {
     //     }
     //   } 
     // }
-    const response = await insertData(`users/login`, restData);
+    const response = await axios.post(BackendURL+'/users/login', restData);
+    console.log(response.data);
+    if(response.status === 200){
+      axios.defaults.headers.common.Authorization = `Bearer ${response.data.token}`;
+    }
     setIsLoading(false);
     
     const { user } = response?.data?.data;
