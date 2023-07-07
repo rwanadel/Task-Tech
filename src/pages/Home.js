@@ -8,16 +8,26 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import gettopusersaction from "../redux/actions/topusersAction";
 import getrelatedpostsAction from "../redux/actions/relatedpostsAction";
+import { BackendURL } from "../constants";
 
 
 
 const Home = () => {
-  
+  const [topUsers, setTopUsers] = useState();
+
+  const getUsers = async () => {
+    // Already authenticated 
+    let res = await axios.get(BackendURL+'/users/topuser');
+    setTopUsers(res.data.data.users);
+    console.log(res);
+  }
+
   //to get top users---------------------------------------------------------
     const dispatchh=useDispatch();
     useEffect(()=>{
-      dispatchh(gettopusersaction())   //هنا انا بجيب الاكشن اللي عايزه انفذه
-    },[])
+      getUsers();
+      // dispatchh(gettopusersaction())   //هنا انا بجيب الاكشن اللي عايزه انفذه
+    },[getUsers])
   
     const high=useSelector(state=>state.topusersReducer.users) //انا هنا باكسس الداتا بتاعتي عن طريق الريديوسر
     const loading=useSelector(state=>state.topusersReducer.loading)
@@ -200,6 +210,21 @@ const Home = () => {
       <Row>
          <span className="high">Highest Rated Freelancers</span>
         
+         {
+          topUsers?(
+            topUsers.map((item)=>{
+              return(
+
+            <Col sm='3'>
+            <FreelancerCard title2={item.name} img={item.photo}
+             job={item.job} rate={item.ratingsAverage}
+              reve={item.ratingsQuantity} skill1={item.skills[0]} 
+              skill2={item.skills[1]} skill3={item.skills[2]}/>
+              </Col>
+              
+              )})
+             ):null
+         }
          {
           high.users?(
             high.users.slice(0,4).map((item)=>{
