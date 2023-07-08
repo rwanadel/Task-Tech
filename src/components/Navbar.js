@@ -74,7 +74,7 @@ const Navbar = () => {
           
 
           <div className="user-profile">
-            <Link to="/viewprofile1"><img src={UserImg} alt="username" /></Link>
+            <Link to="/viewprofile/:id"><img src={UserImg} alt="username" /></Link>
           </div>
           
         </div>

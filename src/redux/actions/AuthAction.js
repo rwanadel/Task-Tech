@@ -26,8 +26,12 @@ export const createNewUser = (data) => async (dispatch) => {
     // res.data.token + res.data.data.user
     const { user } = response?.data?.data;
     const { token } = response?.data;
+    console.log(user)
+    console.log(token)
     if (user && token) {
+      
       localStorage.setItem("userData", JSON.stringify({ user, token }));
+      localStorage.setItem("jwt",  token );
     }
     dispatch({
       type: ADD_USER_DATA,
@@ -62,6 +66,7 @@ export const SignInUser = (data) => async (dispatch) => {
     const { token } = response?.data;
     if (user && token) {
       localStorage.setItem("userData", JSON.stringify({ user, token }));
+      localStorage.setItem("jwt",  token );
     }
     dispatch({
       type: ADD_USER_DATA,

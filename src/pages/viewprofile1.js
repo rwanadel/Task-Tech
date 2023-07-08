@@ -1,6 +1,6 @@
 import { Col, Container, Row } from "react-bootstrap";
 import Basic from "../components/basic-in-createprofile";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../styles/viewprofile1.css"
 import BasicInfo from "../components/basic info about user";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,19 +8,20 @@ import { useEffect } from "react";
 import currtenuserAction from "../redux/actions/currtenuserAction";
 
 const Viewprofile1 = () => {
-
+const {id}=useParams();
+console.log(id)
 
   //to get basic info about currten user
   const dispatchh=useDispatch();
   useEffect(()=>{
-    dispatchh(currtenuserAction())   //هنا انا بجيب الاكشن اللي عايزه انفذه
+    dispatchh(currtenuserAction(id))   //هنا انا بجيب الاكشن اللي عايزه انفذه
   },[])
 
   const currten=useSelector(state=>state.currtenuserReducer.currtenuser) //انا هنا باكسس الداتا بتاعتي عن طريق الريديوسر
   const loading=useSelector(state=>state.currtenuserReducer.loading)
   console.log(currten)
   //console.log(high.users[0].skills)
-  console.log(loading) 
+  //console.log(loading) 
 
 
 
@@ -63,13 +64,14 @@ const Viewprofile1 = () => {
 
         <Col sm="8">
           <div className="box-profile">
-
-            <BasicInfo img="hbj" Name="rwan" job="jbj" rate="jnj" />
+          {/* { currten.data.user?(<BasicInfo img={currten.data.user.photo} Name={currten.name} job={currten.user.job} rate={currten.ratingsAverage} />):null}*/}
+         
+            
 
             <div className="navbar2">
               <Container>
                 <Row className="navbar2">
-                  <Col sm="4"><Link to="/viewprofile1"><span className="word-navbar2">About me
+                  <Col sm="4"><Link to="/viewprofile/:id"><span className="word-navbar2">About me
                     <div class="w3-container  w3-round-xlarge" style={{ width: "50%", height: "10px", backgroundColor: "#165069", margin: "10px" }}></div>
                   </span></Link></Col>
 

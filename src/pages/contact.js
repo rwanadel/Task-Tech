@@ -12,18 +12,18 @@ import axios from "axios";
 import Layout from "../ui/Layout";
 const Contact = () => {
 
-  const [topusers,settopuser]=useState([])
+  //const [topusers,settopuser]=useState([])
   //get top users in highest reated freelancer
- const topuser=async()=>{
-    const res = await axios.get("https://task-teck.onrender.com/api/v1/users/topuser")
+ //const topuser=async()=>{
+    //const res = await axios.get("https://task-teck.onrender.com/api/v1/users/topuser")
     //console.log(res.data.data.users)
-    settopuser(res.data.data.users)
-    console.log(res.data.data)
-    }
-    useEffect(()=>{
-      topuser()
-      console.log(topusers)
-    },[])
+    //settopuser(res.data.data.users)
+    //console.log(res.data.data)
+    //}
+    //useEffect(()=>{
+     // topuser()
+     // console.log(topusers)
+    //},[])
 
 
 
@@ -45,7 +45,7 @@ const Contact = () => {
         </div>
         <div className="services-section">
           <Filters show={showFilters ? true : false} />
-          <FreeLancers topusers={topusers} />
+          <FreeLancers  />
         </div>
       </div>
     </div>

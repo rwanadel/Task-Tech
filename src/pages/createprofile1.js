@@ -119,7 +119,7 @@ const Create1=()=>{
                 <Skills/>
                 <div className="parentto">
                 <input className="enter-skills" type="text" placeholder="Type Skill.."/>
-                <button type="submit" className="btn-for-skills">save</button>
+               <Link to="/createprofile2" ><button type="submit" className="btn-for-skills">save</button></Link>
                 </div>
             </div>
         </Form>
