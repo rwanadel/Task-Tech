@@ -174,12 +174,12 @@ const Home = () => {
       </div>
       </Col>
       <Col sm='6' >
-      <Row className="m">
+      {/*<Row className="m">
       <Col sm='3'><button className="btn-All">All</button></Col>
       <Col sm='3'><button className="btn-web">Web Design</button></Col>
       <Col sm='3'><button className="btn-bess">Business</button></Col>
       <Col sm='3'><button className="btn-mark">Marketing</button></Col>
-      </Row>
+  </Row>*/}
       </Col>
       </Row>
       <Row> {/*-------------------------------- */}

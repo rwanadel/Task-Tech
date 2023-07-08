@@ -1,8 +1,8 @@
-
 import { useRef, useState } from "react";
 import"../styles/uploadprofilepic.css";
+import"../styles/portflio.css";
 
-const ProfilePic=()=>{
+const Portflio=()=>{
     const [image,setImage]=useState("")
     const inputref=useRef(null);
 
@@ -21,15 +21,16 @@ return (
     <div>
     <div  onClick={handleImageClick}>
     
-    {
-        image?(<img className="pic" alt="Remy Sharp" src={URL.createObjectURL(image)}/>):
-    (<img className="pic" alt="Remy Sharp" src="uploadphoto.png"/>)
-}
+    
     <input type="file" ref={inputref} onChange={handleImageChange} style={{display:"none"}}/>
     
     </div>
-    <div className="upload-btn2" onClick={handleImageClick}>+   Upload Photo</div>
+    <div className="upload-port" onClick={handleImageClick}>+   Upload Photo</div>
+    {
+        image?(<div className="div-port"><img className="portflio" alt="Remy Sharp" src={URL.createObjectURL(image)}/></div>):
+    (<h1>No portflio Found</h1>)
+}
     </div>
 );
 }
-export default ProfilePic;
+export default Portflio;
