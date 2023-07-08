@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import "react-toastify/dist/ReactToastify.css";
 import OfferDetails from "./pages/OfferDetails";
 import Notifications from "./pages/Notifications";
 import Home from "./pages/Home";
@@ -28,10 +28,12 @@ import UnProtected from "./components/UnProtected";
 import Viewprofile1 from "./pages/viewprofile1";
 import Viewprofile3 from "./pages/viewprofile3";
 import Viewprofile2 from "./pages/viewprofile2";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <div className="App">
+    <ToastContainer limit={1} rtl={false}/>
       
         <Routes>
           <Route
@@ -174,7 +176,7 @@ function App() {
           />
 
           <Route
-            path="/viewprofile1"
+            path="/viewprofile/:id"
             element={
               <Protected>
                 <Viewprofile1 />

@@ -6,11 +6,12 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
-import getallusersaction from "../redux/actions/topusersAction";
+import  getallusersaction  from "../redux/actions/allusersAction";
 
 // Import styles
 import "../styles/freelancers.css";
 import FreelancerCard from "./FreelancerCard";
+
 
 const FreeLancers = ({topusers}) => {
   const [sort, setSort] = React.useState("");
@@ -19,17 +20,17 @@ const FreeLancers = ({topusers}) => {
     setSort(event.target.value);
   };
 
-  //get all users
-  const dispatchh=useDispatch();
+  //get all users----------------------------------------------------
+  const dispatchh3=useDispatch();
   useEffect(()=>{
-    dispatchh(getallusersaction())   //هنا انا بجيب الاكشن اللي عايزه انفذه
+    dispatchh3(getallusersaction())   //هنا انا بجيب الاكشن اللي عايزه انفذه
   },[])
 
-  const high=useSelector(state=>state.topusersReducer.users) //انا هنا باكسس الداتا بتاعتي عن طريق الريديوسر
-  const loading=useSelector(state=>state.topusersReducer.loading)
-  //console.log(high.users)
+  const high=useSelector(state=>state.allusersReducer.all) //انا هنا باكسس الداتا بتاعتي عن طريق الريديوسر
+  const loading=useSelector(state=>state.allusersReducer.loading2)
+  console.log(high)
   //console.log(high.users[0].skills)
-  //console.log(loading) 
+  console.log(loading) 
 
 
 
@@ -62,19 +63,14 @@ const FreeLancers = ({topusers}) => {
       </div>
 
       <div className="freelancers-contanier">
-      {/*
-        topusers.lenght>=1?(topusers.map((u)=>{
-          return(<FreelancerCard key={u.id} u={u} />)
-        })) : <h1>No Found</h1>
-      */}
-
+      
         {
           high.users?(
             high.users.map((item)=>{
               return(
 
             
-            <FreelancerCard topusers={topusers} title2={item.name} img={item.photo}
+            <FreelancerCard  title2={item.name} img={item.photo}
              job={item.job} rate={item.ratingsAverage}
               reve={item.ratingsQuantity} skill1={item.skills[0]} 
               skill2={item.skills[1]} skill3={item.skills[2]}/>
@@ -82,7 +78,7 @@ const FreeLancers = ({topusers}) => {
               
               )})
              ):null
-        }
+              }
      </div>
     </div>
   );

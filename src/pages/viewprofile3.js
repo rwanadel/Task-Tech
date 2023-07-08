@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 //import "../styles/viewprofile2.css"
 // import ProfilePic from "../components/uploadprofilepic";
 import BasicInfo from "../components/basic info about user";
+import Portflio from "../components/uploadportflio";
 
 const Viewprofile3=()=>{
     return(
@@ -45,10 +46,16 @@ const Viewprofile3=()=>{
               <div className="navbar2">
                <Container>
                <Row className="navbar2">
-               <Col sm="4"><Link to="/viewprofile1"><span className="word-navbar2">About me </span></Link></Col>
+               <Col sm="4"><Link to="/viewprofile/:id"><span className="word-navbar2">About me </span></Link></Col>
                  
                <Col sm="4"><Link to="/viewprofile2"><span className="word-navbar2">Reviews  </span></Link></Col>
                <Col sm="4"><Link to="/viewprofile3"><span className="word-navbar2">Portfolio <div class="w3-container  w3-round-xlarge" style={{width:"40%",height:"10px",backgroundColor:"#165069",margin:"10px"}}></div></span></Link></Col>
+
+               </Row>
+               <Row>
+               <Col sm='12'>
+               <Portflio/>
+               </Col>
                </Row>
                </Container>
                </div>

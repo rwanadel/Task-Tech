@@ -121,7 +121,8 @@ const Create2=()=>{
                 
                 </Row>
                 <Row>
-                    <button className="btn-save">save</button>
+                 <Link to="/createprofile3"  > <button type="submit" className="btn-save">save</button></Link>
+                 
                 </Row>
                 </Form>
             </div>

@@ -1,6 +1,6 @@
 
 import usegettopuser from "../../Hook/usegettopuser"
-import { GET_CURERNT_USER, GET_ERROR, GET_TOP_USERS } from "../type"
+import {  GET_ERROR, GET_TOP_USERS } from "../type"
 // اي حاجه في ال اكشن لازم تكون)(higherorderfunction)
 
 const gettopusersaction =()=> async(dispatch) =>{
@@ -22,23 +22,6 @@ const gettopusersaction =()=> async(dispatch) =>{
 }  
 
 
-export const getallusersaction =()=> async(dispatch) =>{
-    try {
-       //const res = await baseUrl.get('users/topuser'); // الجزء ده هشيله وهعوض عن ب هوك هتفدني في حاجات 
-       //console.log(res.data)
-       const response=await usegettopuser ('users/alluser')
-       dispatch({
-           type:GET_CURERNT_USER,
-           payload:response.data,
-       })
-       
-    } catch (e) {
-       dispatch({
-           type:GET_ERROR,
-           payload:"Error"+e,
-       })
-    }
-}  
 
 
 

@@ -176,7 +176,7 @@ const Create3=()=>{
                 </Row>
 
                 
-                <button className="btn-save">save</button>
+              <Link to="/viewprofile/:id">  <button className="btn-save">save</button></Link>
             </Form>
         </div>
         </Col>
