@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createNewUser } from "../redux/actions/AuthAction";
 import { isValidEmail } from "../Api/helpers";
@@ -36,13 +37,18 @@ const SignUpHook = () => {
   };
   
   const res = useSelector((state) => state.authReducer.createUser);
+  const navigate =useNavigate()
+  const handleRedirect=()=>{
+    navigate("/createprofile1")
+  }
   //save data
-  const OnSubmit = async () => {
+  const OnSubmit = () => {
     if (validationValue()) {
       const { name, password, email, confirmPassword } = values;
       dispatch(
         createNewUser({
           setLoading,
+          handleRedirect,
           name,
           email,
           password,
