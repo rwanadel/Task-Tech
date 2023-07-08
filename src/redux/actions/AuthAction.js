@@ -12,7 +12,7 @@ import { insertData } from "../../Hook/useInsertData";
 
 //create new user
 export const createNewUser = (data) => async (dispatch) => {
-  const { setLoading, ...restData } = data;
+  const { setLoading, handleRedirect, ...restData } = data;
   try {
     setLoading(true);
     const response = await insertData(`register`, restData);
@@ -22,17 +22,19 @@ export const createNewUser = (data) => async (dispatch) => {
       type: ADD_SUCCESS_MESSAGE,
       payload: "User created successfully,",
     });
+    
 
     // res.data.token + res.data.data.user
     const { user } = response?.data?.data;
     const { token } = response?.data;
     if (user && token) {
-      localStorage.setItem("userData", JSON.stringify({ user, token }));
+      localStorage.setItem ("userData", JSON.stringify({ user, token }));
     }
-    dispatch({
+    await dispatch({
       type: ADD_USER_DATA,
       payload: { user, token },
     });
+    handleRedirect();
   } catch (e) {
     setLoading(false);
     dispatch({

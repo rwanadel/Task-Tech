@@ -2,7 +2,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import Basic from "../components/basic-in-createprofile";
 import { Link } from "react-router-dom";
 //import "../styles/viewprofile2.css"
-import ProfilePic from "../components/uploadprofilepic";
+// import ProfilePic from "../components/uploadprofilepic";
 import BasicInfo from "../components/basic info about user";
 
 const Viewprofile2=()=>{

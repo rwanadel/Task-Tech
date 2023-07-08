@@ -23,7 +23,7 @@ import Protected from "./components/Protected";
 import Layout from "./ui/Layout";
 import "./styles/global.css";
 import Landing from "./pages/landingpage";
-// import Protected from "./components/Protected";
+
 import UnProtected from "./components/UnProtected";
 import Viewprofile1 from "./pages/viewprofile1";
 import Viewprofile3 from "./pages/viewprofile3";

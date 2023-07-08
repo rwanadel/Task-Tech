@@ -9,7 +9,7 @@ import "../styles/createprofile3.css"
 import { Link } from "react-router-dom";
 import { useRef, useState } from "react";
 import { BsFillFileEarmarkPlusFill } from "react-icons/bs";
-import { Autocomplete, Select } from "@mui/material";
+// import { Autocomplete, Select } from "@mui/material";
 
 const Create3=()=>{
     const arr=["Ain Shams University",
